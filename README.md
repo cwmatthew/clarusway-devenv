@@ -49,6 +49,12 @@ PS: All the commands written in this article tested on relevant systems.
 
 - Install homebrew
 
+  ```bash
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  ```
+
+  
+
 ### - Linux
 
 homebrew or existing apt ?
@@ -57,7 +63,7 @@ homebrew or existing apt ?
 
 ### - Windows 10, 8.1 and Windows 7
 
-- [ ] Open `powershell.exe` or `cmd.exe` with **[elevated rights](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)** (click start and type `powershell.exe` then click the application with `ctrl+shift` pressed), and run
+- [ ] Open `powershell.exe` or `cmd.exe` with **[elevated rights](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)** (click start and type `powershell.exe` or `cmd.exe` then click the application with `ctrl+shift` pressed), and run
 
   ```powershell
   choco install git -y
@@ -89,41 +95,6 @@ homebrew or existing apt ?
     - [ ] [FiraCode NF Bold.ttf](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Bold/complete/Fira%20Code%20Bold%20Nerd%20Font%20Complete%20Windows%20Compatible.ttf?raw=true)
     - [ ] [FiraCode NF Light.ttf](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Light/complete/Fira%20Code%20Light%20Nerd%20Font%20Complete%20Windows%20Compatible.ttf?raw=true)
     - [ ] [FiraCode NF Medium Italic.ttf](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Medium/complete/Fira%20Code%20Medium%20Nerd%20Font%20Complete%20Windows%20Compatible.ttf)
-
-## Terminal Emulator
-
-### - Windows 10
-
-  - Windows Terminal
-
-    - [ ] Install Windows Terminal from the [Windows Store](https://aka.ms/terminal). 
-
-    - [ ] or via powershell:
-
-      ```powershell
-      Invoke-WebRequest -Uri https://github.com/microsoft/terminal/releases/download/v1.4.3243.0/Microsoft.WindowsTerminal_1.4.3243.0_8wekyb3d8bbwe.msixbundle -OutFile wt.msixbundle -UseBasicParsing
-      
-      Add-AppxPackage .\wt.msixbundle
-      ```
-
-  - WSL Ubuntu 20.04 see [WSL Ubuntu Setup](./wsl-ubuntu.md)
-
-### Windows 8.1 and Windows 7
-
-- Install Cmder Mini
-  - [ ] Open `powershell.exe` or `cmd.exe` with **[elevated rights](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)** (click start and type `powershell.exe` then click the application with `ctrl+shift` pressed), and run
-
-    ```powershell
-    choco install cmdermini -y
-    ```
-
-### macOS
-
-- Install iterm2
-  - [ ] `brew install iterm2`
-
-### Linux
-
 
 ## Shell Setup
 
@@ -216,11 +187,47 @@ homebrew or existing apt ?
 
       Save and exit nano editor with `CTRL+X` and confirm changes.
 
+## Terminal Emulator
+
+### - Windows 10
+
+  - Windows Terminal
+
+    - [ ] Install Windows Terminal from the [Windows Store](https://aka.ms/terminal). 
+
+    - [ ] or via powershell:
+
+      ```powershell
+      Invoke-WebRequest -Uri https://github.com/microsoft/terminal/releases/download/v1.4.3243.0/Microsoft.WindowsTerminal_1.4.3243.0_8wekyb3d8bbwe.msixbundle -OutFile wt.msixbundle -UseBasicParsing
+      
+      Add-AppxPackage .\wt.msixbundle
+      ```
+
+  - WSL Ubuntu 20.04 see [WSL Ubuntu Setup](./wsl-ubuntu.md)
+
+### Windows 8.1 and Windows 7
+
+- Install Cmder Mini
+  - [ ] Open `powershell.exe` or `cmd.exe` with **[elevated rights](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)** (click start and type `powershell.exe` or `cmd.exe` then click the application with `ctrl+shift` pressed), and run
+
+    ```powershell
+    choco install cmdermini -y
+    ```
+
+### macOS
+
+- Install iterm2
+  - [ ] `brew install iterm2`
+
+### Linux
+
+
+
 ## Other tools
 
   - Install Openssh (Windows only, others have by default)
 
-    - [ ] Open `powershell.exe` or `cmd.exe` with **[elevated rights](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)** (click start and type `powershell.exe` then click the application with `ctrl+shift` pressed), and run
+    - [ ] Open `powershell.exe` or `cmd.exe` with **[elevated rights](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)** (click start and type `powershell.exe` or `cmd.exe` then click the application with `ctrl+shift` pressed), and run
 
       ```powershell
       choco install cmdermini -y
@@ -230,7 +237,7 @@ homebrew or existing apt ?
 
       - Windows:
 
-    - [ ] Open `powershell.exe` or `cmd.exe` with **[elevated rights](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)** (click start and type `powershell.exe` then click the application with `ctrl+shift` pressed), and run
+    - [ ] Open `powershell.exe` or `cmd.exe` with **[elevated rights](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)** (click start and type `powershell.exe` or `cmd.exe` then click the application with `ctrl+shift` pressed), and run
 
       ```powershell
       choco install vscode -y

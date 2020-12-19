@@ -56,7 +56,7 @@
 
   - [ ] To configure directory mount points, Open `git-bash.exe` with **[elevated rights](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)** (click start and type `git bash` then click the application with `ctrl+shift` pressed) and run `nano /etc/fstab`
 
-    ```
+    ```bash
     # modify the lines below "DO NOT REMOVE NEXT LINE"
     
     # DO NOT REMOVE NEXT LINE. It remove cygdrive prefix from path
