@@ -32,18 +32,18 @@ Before installing any Linux distributions on Windows, you must enable the "Windo
 
     to install manually downloaded appx package:
 
-    ```
+    ```powershell
     Add-AppxPackage .\Ubuntu2004.appx
     ```
 
-  - [ ] Launch Ubuntu2004.exe and do initial user name, and password stuff: (you will need this password when you need root access on wsl ubuntu)
+  - [ ] Launch `Ubuntu2004.exe` and do initial user name, and password stuff: (you will need this password when you need root access on WSL Ubuntu)
 
     ![Initial Setup](https://docs.microsoft.com/en-us/windows/wsl/media/ubuntuinstall.png)
 
     Right click on the title bar, select Defaults:
     Under the Options tab, select `Use Ctrl+Shift+C/V as Copy/Paste`
 
-  - [ ] Update ubuntu wsl repository database and pre-installed applications by typing following command on ubuntu console:
+  - [ ] Update WSL Ubuntu repository database and pre-installed applications by typing following command on Ubuntu console:
 
     ```bash
     sudo apt update && sudo apt upgrade && sudo apt autoremove -y
@@ -57,7 +57,7 @@ Before installing any Linux distributions on Windows, you must enable the "Windo
 
     You now have a .dircolors file containing the color configuration for `ls`, which is stored in the env variable LS_COLORS. What we need to do next is make a change to the colors, and save it back to LS_COLORS.
 
-  - [ ] Run`nano ~/.dircolors` , and modify with the settins below. We're removing the background from OTHER_WRITABLE, and fixing the font color for the rest:
+  - [ ] Run`nano ~/.dircolors` , and modify with the settings below. We're removing the background from OTHER_WRITABLE, and fixing the font color for the rest:
 
     Change `SETUID` to: `SETUID 00;30;41`
 
@@ -81,4 +81,4 @@ Before installing any Linux distributions on Windows, you must enable the "Windo
 
     - [ ] Save file and close nano and restart Ubuntu-20.04
 
-  - [ ] Follow [Shell Setup](./README.md#Shell Setup)
+  - [ ] Follow [Shell Setup](./README.md#shell-setup)

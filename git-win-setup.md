@@ -2,19 +2,19 @@
 
 > If it is not installed yet, you can install with `choco install 7zip -y` on an elevated command prompt/or powershell, or you can download from https://www.7-zip.org/ 
 
-- For 64 bit Windows Systems (x86_64) [How to check]()
+- For 64 bit Windows Systems (x86_64) [How to check](https://www.howtogeek.com/howto/21726/how-do-i-know-if-im-running-32-bit-or-64-bit-windows-answers/)
 
-  - Download files below:
+  - Download files below: 
     - [ ] pacman, https://repo.msys2.org/msys/x86_64/pacman-5.2.2-4-x86_64.pkg.tar.xz
     - [ ] keyring,https://repo.msys2.org/msys/x86_64/msys2-keyring-1~20201002-1-any.pkg.tar.xz
-    - [ ] repository mirror list, [pacman mirror list files](./assets/mirrorlists.zip)
+    - [ ] repository mirror list, [pacman mirror list files](./assets/mirrorlists.zip?raw=true)
   
 - For 32 bit Windows Systems(x86):
 
   - Download files below:
     - [ ] pacman, https://repo.msys2.org/msys/i686/pacman-5.2.2-4-i686.pkg.tar.xz
     - [ ] keyring,https://repo.msys2.org/msys/x86_64/msys2-keyring-1~20201002-1-any.pkg.tar.xz
-    - [ ] repository mirror list, [pacman mirror list files](./assets/mirrorlists.zip)
+    - [ ] repository mirror list, [pacman mirror list files](./assets/mirrorlists.zip?raw=true)
   
 - For the both architecture:
 
