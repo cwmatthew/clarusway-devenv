@@ -2,7 +2,7 @@
 
 > If it is not installed yet, you can install with `choco install 7zip -y` on an elevated command prompt/or powershell, or you can download from https://www.7-zip.org/ 
 
-- For 64 bit Windows Systems (x86_64) [How to check](https://www.howtogeek.com/howto/21726/how-do-i-know-if-im-running-32-bit-or-64-bit-windows-answers/)
+- For 64 bit Windows Systems (x86_64) **[How to check](https://www.howtogeek.com/howto/21726/how-do-i-know-if-im-running-32-bit-or-64-bit-windows-answers/)**
 
   - Download files below: 
     - [ ] pacman, https://repo.msys2.org/msys/x86_64/pacman-5.2.2-4-x86_64.pkg.tar.xz
@@ -20,7 +20,7 @@
 
   - [ ] Open these file with 7zip. There are one more archieve files within pacman and keyring files. Open inner ones and extract all folders and as well as mirrorlists.zip contents into git for windows directory  (default folder is c:\Program Files\Git\)
 
-  - [ ] Open `git-bash.exe` with **[elevated rights](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)** (click start and type `git bash` then click the application with `ctrl+shift` pressed):
+  - [ ] Open `git-bash.exe` with **elevated rights** (click start and type `git bash` then click the application with `ctrl+shift` pressed):
 
     ```bash
     set "PATH=%programfiles%\Git\usr\bin"
@@ -54,7 +54,7 @@
     # we are also doing one of major installation at the line above 😉
     ```
 
-  - [ ] To configure directory mount points, Open `git-bash.exe` with **[elevated rights](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)** (click start and type `git bash` then click the application with `ctrl+shift` pressed) and run `nano /etc/fstab`
+  - [ ] To configure directory mount points, Open `git-bash.exe` with **elevated rights** (click start and type `git bash` then click the application with `ctrl+shift` pressed) and run `nano /etc/fstab`
 
     ```bash
     # modify the lines below "DO NOT REMOVE NEXT LINE"

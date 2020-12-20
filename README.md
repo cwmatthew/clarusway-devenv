@@ -35,7 +35,7 @@ PS: All the commands written in this article tested on relevant systems.
 
   - [ ] Unzip it using any application that supports `zip` format. You can just rename downloaded file e.g: `chocolatey.0.10.15.nupkg` --> `chocolatey.0.10.15.zip` and extract the file using windows explorer context menu.
 
-  - [ ] Open `powershell.exe` with **[elevated rights](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)** (click start and type `powershell.exe` then click the application with `ctrl+shift` pressed) and navigate into the unzipped package's tools folder.
+  - [ ] Open `powershell.exe` with **elevated rights** (click start and type `powershell.exe` then click the application with `ctrl+shift` pressed) and navigate into the unzipped package's tools folder.
 
     ```powershell
     PS C:\...\chocolatey.0.10.15\tools> .\chocolateyInstall.ps1
@@ -63,13 +63,13 @@ homebrew or existing apt ?
 
 ### - Windows 10, 8.1 and Windows 7
 
-- [ ] Open `powershell.exe` or `cmd.exe` with **[elevated rights](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)** (click start and type `powershell.exe` or `cmd.exe` then click the application with `ctrl+shift` pressed), and run
+- [ ] Open `powershell.exe` or `cmd.exe` with **elevated rights** (click start and type `powershell.exe` or `cmd.exe` then click the application with `ctrl+shift` pressed), and run
 
   ```powershell
   choco install git -y
   ```
 
-- [ ]  [Configure git for windows](./git-win-setup.md)
+- [ ]  [Configure git for windows](./setup-git-win.md)
 
 ### - macOS
 
@@ -102,9 +102,9 @@ homebrew or existing apt ?
 
       - **Windows 10**
 
-        - [ ] Open `git-bash.exe` with **[elevated rights](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)** (click start and type `git bash` then click the application with `ctrl+shift` pressed) or open cmder and select `git bash (admin)` from shell list, and run`pacman -S zsh --noconfirm --overwrite='*'`, if you did not already installed zsh, please follow [Configure git for windows](./git-win-setup.md).
+        - [ ] Open `git-bash.exe` with **elevated rights** (click start and type `git bash` then click the application with `ctrl+shift` pressed) or open cmder and select `git bash (admin)` from shell list, and run`pacman -S zsh --noconfirm --overwrite='*'`, if you did not already installed zsh, please follow [Configure git for windows](./setup-git-win.md).
 
-          > Please note that, in order to run above command, you should have [configured git for windows](./git-win-setup.md). 
+          > Please note that, in order to run above command, you should have [configured git for windows](./setup-git-win.md). 
           > You should have also configured cmder app as mentioned above.
 
         - [ ] Open Windows Terminal from start menu, and select Ubuntu 20.04 from the list at the tab bar of the application, and run `sudo apt install zsh -y`
@@ -113,9 +113,9 @@ homebrew or existing apt ?
 
       - **Windows 7,  8.1**
 
-        - [ ] Open `git-bash.exe` with **[elevated rights](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)** (click start and type `git bash` then click the application with `ctrl+shift` pressed) or open cmder and select `git bash (admin)` from shell list, and run`pacman -S zsh --noconfirm --overwrite='*'`
+        - [ ] Open `git-bash.exe` with **elevated rights** (click start and type `git bash` then click the application with `ctrl+shift` pressed) or open cmder and select `git bash (admin)` from shell list, and run`pacman -S zsh --noconfirm --overwrite='*'`
 
-          > Please note that, in order to run above command, you should have [configured git for windows](./git-win-setup.md).
+          > Please note that, in order to run above command, you should have [configured git for windows](./setup-git-win.md).
           >
           > You should have also configured cmder app as mentioned above.
 
@@ -203,12 +203,12 @@ homebrew or existing apt ?
       Add-AppxPackage .\wt.msixbundle
       ```
 
-  - WSL Ubuntu 20.04 see [WSL Ubuntu Setup](./wsl-ubuntu.md)
+  - WSL Ubuntu 20.04 see [WSL Ubuntu Setup](./setup-wsl-ubuntu.md)
 
 ### Windows 8.1 and Windows 7
 
 - Install Cmder Mini
-  - [ ] Open `powershell.exe` or `cmd.exe` with **[elevated rights](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)** (click start and type `powershell.exe` or `cmd.exe` then click the application with `ctrl+shift` pressed), and run
+  - [ ] Open `powershell.exe` or `cmd.exe` with **elevated rights** (click start and type `powershell.exe` or `cmd.exe` then click the application with `ctrl+shift` pressed), and run
 
     ```powershell
     choco install cmdermini -y
@@ -227,7 +227,7 @@ homebrew or existing apt ?
 
   - Install Openssh (Windows only, others have by default)
 
-    - [ ] Open `powershell.exe` or `cmd.exe` with **[elevated rights](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)** (click start and type `powershell.exe` or `cmd.exe` then click the application with `ctrl+shift` pressed), and run
+    - [ ] Open `powershell.exe` or `cmd.exe` with **elevated rights** (click start and type `powershell.exe` or `cmd.exe` then click the application with `ctrl+shift` pressed), and run
 
       ```powershell
       choco install cmdermini -y
@@ -237,7 +237,7 @@ homebrew or existing apt ?
 
       - Windows:
 
-    - [ ] Open `powershell.exe` or `cmd.exe` with **[elevated rights](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)** (click start and type `powershell.exe` or `cmd.exe` then click the application with `ctrl+shift` pressed), and run
+    - [ ] Open `powershell.exe` or `cmd.exe` with **elevated rights** (click start and type `powershell.exe` or `cmd.exe` then click the application with `ctrl+shift` pressed), and run
 
       ```powershell
       choco install vscode -y
