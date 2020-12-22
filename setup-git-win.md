@@ -29,11 +29,11 @@
     bash pacman-key --refresh-keys
     pacman -Tv
     pacman -Syuv --overwrite='*'
-    # close git bash window and reopen it as elevated
     pacman --version
     pacman -Sv --noconfirm --overwrite='*' bash 
     # this install might stuck at infinite loop, if so
     # close git bash window and reopen it as elevated
+    # run the last command again
     pacman -Sv --noconfirm --overwrite='*' bash 
     pacman -Sv --noconfirm --overwrite='*' rsync
     pacman -Sv --noconfirm --overwrite='*' util-linux 
@@ -63,12 +63,11 @@
     none /mnt cygdrive binary,posix=0,noacl,user 0 0
     # All drives will be mounted under /mnt eg /mnt/c /mnt/d just like in WSL
     none /tmp usertemp binary,posix=0,noacl 0 0
-    # temp settings as the name suggests
     /mnt/c/Users /home auto bind,binary,posix=0,noacl,user 0 0
     # binding c:\Users to /home so user homedir will be /home/<user>
     ```
-
-    Save and exit nano editor with `CTRL+X` and confirm changes.
-
-    After restart, open git bash and type `pwd`, your user profile directory should be `/home/<username>`
+    
+Save and exit nano editor with `CTRL+X` and confirm changes.
+    
+After restart, open git bash and type `pwd`, your user profile directory should be `/home/<username>`
 
