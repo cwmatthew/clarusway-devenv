@@ -70,7 +70,7 @@ PS: All the commands written in this article tested on relevant systems.
   choco install git -y
   ```
 
-- [ ]  [Configure git for windows](./setup-git-win.md)
+- [ ]  In order to enhance terminal experience, we need to [Configure git for windows](./setup-git-win.md) by integrating some msys2 packages.
 
 ### - macOS
 
@@ -79,6 +79,18 @@ PS: All the commands written in this article tested on relevant systems.
 ### - Linux
 
 - [ ]  `sudo apt install git -y`  
+
+### - Setting up .gitconfig file
+
+- This setup is platform independent, you can either execute commands below or copy [.gitconfig][./.gitconfig] file to your home directory and change relevant lines with your identity using a text editor.
+
+  ```bash
+  git config --global user.name "Your Name"
+  git config --global user.email "youremail@example.com"
+  
+  ```
+
+  
 
 ## Fonts
 
@@ -108,26 +120,20 @@ PS: All the commands written in this article tested on relevant systems.
 
 - **Windows 10**
 
-  - [ ] Open `git-bash.exe` with **elevated rights** (click start and type `git bash` then click the application with `ctrl+shift` pressed) or open conemu and select `git bash (admin)` from shell list, and
-
-    run`pacman -S zsh --noconfirm --overwrite='*'`.
-    If you did not installed zsh yet, please follow [Configure git for windows](./setup-git-win.md).
+  - [ ] Open `git-bash.exe` with **elevated rights** (click start and type `git bash` then click the application with `ctrl+shift` pressed) and run`pacman -S zsh --noconfirm --overwrite='*'`.
 
     > Please note that, in order to run above command, you should have [configured git for windows](./setup-git-win.md). 
-    > You should have also configured conemu app as mentioned above.
-
-  - [ ] Open Windows Terminal from start menu, and select Ubuntu 20.04 from the list at the tab bar of the application, and run `sudo apt install zsh -y`
-
+    
+- [ ] Open Windows Terminal from start menu, and select Ubuntu 20.04 from the list at the tab bar of the application, and run `sudo apt install zsh -y`
+  
     > Please note that, in order to run above command, you should have configured Windows Terminal and WSL Ubuntu on [Terminal Emulator Windows 10 Section](#Terminal Emulator).
 
 - **Windows 7,  8.1**
 
-  - [ ] Open `git-bash.exe` with **elevated rights** (click start and type `git bash` then click the application with `ctrl+shift`conemu `git bash (admin)` from shell list, and run`pacman -S zsh --noconfirm --overwrite='*'`
+  - [ ] Open `git-bash.exe` with **elevated rights** (click start and type `git bash` then click the application with `ctrl+shift` and run`pacman -S zsh --noconfirm --overwrite='*'` 
 
     > Please note that, in order to run above command, you should have [configured git for windows](./setup-git-win.md).
-    >
-    > You should have also configured conemu app as mentioned above.
-
+  
 - **macOS**
 
   *macOS Catalina and beyond comes with zsh as default shell. However it is recommended to upgrade stock zsh via homebrew for your convenience. For macOS Mojave you need to install zsh.*
@@ -250,19 +256,24 @@ PS: All the commands written in this article tested on relevant systems.
 
   - WSL Ubuntu 20.04 see [WSL Ubuntu Setup](./setup-wsl-ubuntu.md)
 
+  - If you also would like to install Cmder Mini on Windows 10, please follow the instructions for Windows 8.1 and Windows 7 below.
+
 ### Windows 8.1 and Windows 7
 
-- Install Conemu
+- Install Cmder Mini
   - [ ] Open `powershell.exe` or `cmd.exe` with **elevated rights** (click start and type `powershell.exe` or `cmd.exe` then click the application with `ctrl+shift` pressed), and run
 
     ```powershell
-    choco install conemu -y
+    choco install cmdermini -y
     ```
 
 ### macOS
 
 - Install iterm2
+  
   - [ ] `brew install iterm2`
+  
+  > macOS comes with stock "Terminal.app", but it is recommended to install iterm2.
 
 ### Linux
 
