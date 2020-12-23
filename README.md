@@ -202,7 +202,7 @@ PS: All the commands written in this article tested on relevant systems.
       
     - [ ] Run `source ¨/.zshrc` command to update your terminal settings. Powerlevel10K initial setup p10k configure command will check some symbols visibility and configure look and feel as your preference. Recommended font for the terminal is MesloLGS NF, download links above.  For further details, please visit [Powerlevel10k repository](https://github.com/romkatv/powerlevel10k).
 
-      ![image-20201222204802794](D:\projects\_cw\clarusway-devenv\assets\win7_cmder_zsh_bash.png)
+      ![Zsh vs Bash in Windows 7](./assets/win7_cmder_zsh_bash.png)
 
       *Powerlevel10k zsh vs bare bash console in windows 7 on cmder at git for windows*
 
@@ -224,11 +224,11 @@ PS: All the commands written in this article tested on relevant systems.
 
     > *Note: At the integrated terminal on visual studio code in windows 7, you may see redundant percent sign (%) prior to current prompt line.*
     >
-    > ![image-20201222203024122](D:\projects\_cw\clarusway-devenv\assets\vscode-terminal.png)
+    > ![Redundant percent sign](./assets/vscode-terminal.png)
     >
     > *To solve this redundancy enter following lines of commands in .zshrc file just after p10k-instant-prompt block below*
     >
-    > ![image-20201222205445970](D:\projects\_cw\clarusway-devenv\assets\redundant_solution_w7.png)
+    > ![Redundant percent sign solution](./assets/redundant_solution_w7.png)
     >
     > *source: https://superuser.com/a/645612*
 
