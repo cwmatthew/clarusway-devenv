@@ -1,0 +1,23 @@
+[user]
+	name = Your Name
+	email = your.name@example.com
+
+[core]
+	autocrlf = input
+	eol = lf
+	pager = less -FRSX
+
+[init]
+	defaultbranch = main
+
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+  ui = auto
+
+[color "branch"]
+  current = green
+  remote = yellow
+  
