@@ -20,6 +20,10 @@ Before installing any Linux distributions on Windows, you must enable the "Windo
 
   - [ ] Install WSL Ubuntu from the Windows Store. ([Ubuntu-20.04](https://aka.ms/wslubuntu2004))
 
+    <img src="./assets/ubuntu_ws.png" alt="ubuntu_ws" style="zoom:50%;" />
+
+    <img src="./assets/ubuntu_ws2.png" alt="ubuntu_ws2" style="zoom: 50%;" />
+
   - [ ] or download via powershell or curl:
 
     ```powershell
