@@ -96,15 +96,13 @@ Let's define our roadmap of our development environment for those operating syst
 
 ### - Setting up .gitconfig file
 
-- This setup is platform independent, you can either execute commands below or copy [.gitconfig][./.gitconfig] file to your home directory and change relevant lines with your identity using a text editor.
+- This setup is platform independent, you can either execute commands below or copy [.gitconfig](.gitconfig) file to your home directory and change relevant lines with your identity using a text editor.
 
   ```bash
   git config --global user.name "Your Name"
   git config --global user.email "youremail@example.com"
   ```
   
-
-
 
 ## Configure Git for Windows
 
@@ -126,7 +124,7 @@ Let's define our roadmap of our development environment for those operating syst
   
 - For the both architecture:
 
-  - [ ] Open these file with 7zip. There are one more archieve files within pacman and keyring files. Open inner ones and extract all folders and as well as mirrorlists.zip contents into git for windows directory  (default folder is c:\Program Files\Git\)
+  - [ ] Open these file with elevated 7zip, since we are writing into Git folder inside Program Files, and this folder is a system folder. There are one more archieve files within pacman and keyring files. Open inner ones and extract all folders and as well as mirrorlists.zip contents into git for windows directory  (default folder is c:\Program Files\Git\)
 
   - [ ] Open `git-bash.exe` with **elevated rights** (click start and type `git bash` then click the application with `ctrl+shift` pressed):
 
@@ -207,6 +205,232 @@ Let's define our roadmap of our development environment for those operating syst
     
       > *Windows users can install via `choco install firacodenf -y` as well.*
 
+## Terminal Emulator
+
+### - Windows 10
+
+  - **WSL Ubuntu 20.04 Setup**
+
+    Before installing any Linux distributions on Windows, you must enable the "Windows Subsystem for Linux" optional feature.
+
+    - [ ] Install the Windows Subsystem for Linux
+
+      - [ ] Open `powershell.exe` with **[elevated rights](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)** (click start and type `powershell.exe` then click the application with `ctrl+shift` pressed) and run following commands:
+
+        ```powershell
+        dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+        dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+        Restart-Computer
+        ```
+
+  - [ ] Set WSL 2 as your default version
+
+    ```powershell
+    wsl --set-default-version 2
+    ```
+
+  - [ ] Install WSL Ubuntu from the Windows Store. ([Ubuntu-20.04](https://aka.ms/wslubuntu2004))
+
+    <img src="D:\projects\_cw\clarusway-devenv\assets\ubuntu_ws.png" alt="ubuntu_ws" style="zoom:50%;" />
+
+    <img src="D:\projects\_cw\clarusway-devenv\assets\ubuntu_ws2.png" alt="ubuntu_ws2" style="zoom: 50%;" />
+
+  - [ ] or download via powershell or curl:
+
+    ```powershell
+    Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile Ubuntu2004.appx -UseBasicParsing
+    ```
+
+    ```bash
+    curl -L -o Ubuntu-2004.appx https://aka.ms/wslubuntu2004
+    ```
+
+​    to install manually downloaded appx package:
+
+    ```powershell
+    Add-AppxPackage .\Ubuntu2004.appx
+    ```
+
+  - [ ] Launch `Ubuntu2004.exe` and do initial user name, and password stuff: (you will need this password when you need root access on WSL Ubuntu)
+
+    ![Initial Setup](https://docs.microsoft.com/en-us/windows/wsl/media/ubuntuinstall.png)
+
+    Right click on the title bar, select Defaults:
+    Under the Options tab, select `Use Ctrl+Shift+C/V as Copy/Paste`
+
+  - [ ] 
+
+- [ ] - [ ] ```
+    
+    ```
+
+    - [ ] Save file and close nano and restart Ubuntu-20.04
+
+  - [ ] Please follow [Shell Setup](#shell-setup) above in order to have zsh and oh-my-zsh and powerlevel10k theme triology on WSL Ubuntu as well.
+
+ - **Windows Terminal**
+
+   - [ ] Install Windows Terminal from the [Windows Store](https://aka.ms/terminal). 
+
+   - [ ] or via powershell:
+
+     ```powershell
+     Invoke-WebRequest -Uri https://github.com/microsoft/terminal/releases/download/v1.4.3243.0/Microsoft.WindowsTerminal_1.4.3243.0_8wekyb3d8bbwe.msixbundle -OutFile wt.msixbundle -UseBasicParsing
+     
+     Add-AppxPackage .\wt.msixbundle
+     ```
+
+     <img src="./assets/win_term_ws.png" alt="win_term_ws" style="zoom:50%;" />
+
+     <img src="./assets/win_term_ws2.png" alt="win_term_ws2" style="zoom:50%;" />
+
+   Windows Terminal is configured for the build-in cmd.exe, powershell.exe and wsl ubuntu automatically. However we still need to change default fonts and some stuff to beautify our terminal, and also we need to add git bash and git zsh entries to windows terminal setting file. Let's do that.
+
+   - [ ] For your convenience, prior to setting up windows terminal, it is advised to install visual studio code, since you can use vscode to edit configuration easily, vscode will autocomplete while you are typing some values for windows terminal. See [Other tools](#Other tools) for details.
+
+   - [ ] Open windows terminal app.
+
+     ![image-20201230152636302](./assets/win_term1.png)
+
+   - [ ] Open Windows Terminal setting.json as seen above. Default editor will open setting.json file.
+
+     ```json
+         {
+           "defaults": {
+             // Put settings here that you want to apply to all profiles.
+                 "startingDirectory": "$HOME",
+                 "fontFace": "MesloLGS NF", // "JetBrainsMono NF"  // "FiraCode NF"
+                 "fontSize": 16,
+                 "fontWeight": "semi-light",
+                 "cursorColor" : "#FFFFFF",
+                 "cursorShape" : "bar",
+                 "historySize" : 9001,
+                 "padding": "6, 2",
+                 "backgroundImage": "%USERPROFILE%\\Pictures\\cwlogo106.png",
+               // please copy this image from assets directory to your pictures folder
+                 "backgroundImageAlignment": "bottomRight",
+                 "backgroundImageStretchMode": "none",
+                 "backgroundImageOpacity": 0.5
+           },
+             "list":
+             [
+                {
+                     "guid": "{12396def-8d0e-4ab1-a9cf-3d842633ca92}",
+                    // this is a random hexadecimal number group feel free to change whatever you want
+                    // please note that this numbers should be unique to each entry on windows terminal list here
+                    // and we will use this guid to address default shell at windows terminal start
+                     "closeOnExit" : true,
+                     "commandline" : "\"%PROGRAMFILES%\\git\\bin\\bash.exe\" --login -i -l -c 'exec zsh'",
+                     "startingDirectory": "$HOME",
+                     "icon" : "%PROGRAMFILES%\\git\\mingw64\\share\\git\\git-for-windows.ico",
+                     "name" : "Git Zsh"
+                 },           {
+                     "guid": "{45696bce-8d0e-4ab1-a9cf-3d842633ca92}",
+                     "closeOnExit" : true,
+                     "commandline" : "\"%PROGRAMFILES%\\git\\bin\\bash.exe\" --login -i -l",
+                     "cursorColor" : "#FFFFFF",
+                     "cursorShape" : "bar",
+                     "historySize" : 9001,
+                     "padding": "4, 4",
+                     "startingDirectory": "$HOME",
+                     "icon" : "%PROGRAMFILES%\\git\\mingw64\\share\\git\\git-for-windows.ico",
+                     "name" : "Git Bash"
+                 },
+                 {
+                     "guid": "{18c52f4f-de2c-5db4-bd2d-ba144ed6c273}",
+                     "hidden": false,
+                     "name": "Ubuntu-20.04 Zsh",
+                     "tabTitle": "Zsh",
+                     "icon": "%USERPROFILE%\\Pictures\\ubuntu.png",
+                     // you may delete this line if you like penguin icon 🐧
+                     "commandline" : "wsl --distribution Ubuntu-20.04 zsh"
+                 },
+                 {
+                     "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+                     "hidden": false,
+                     "name": "Ubuntu-20.04",
+                     "icon": "%USERPROFILE%\\Pictures\\ubuntu1.png",
+                     // you may delete this line if you like penguin icon 🐧                
+                     "source": "Windows.Terminal.Wsl"
+                 },
+                 {
+                     // Make changes here to the powershell.exe profile.
+                     "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                     "name": "Windows PowerShell",
+                     "commandline": "powershell.exe -NoLogo",
+                     "colorScheme": "Campbell Powershell",
+                     "hidden": false
+                 }, 
+                 {
+                     // Make changes here to the cmd.exe profile.
+                     "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                     "name": "Command Prompt",
+                     "commandline": "cmd.exe /k cls",
+                     "hidden": false
+                 },
+                 {
+                     "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                     "hidden": true,
+                     "name": "Azure Cloud Shell",
+                     "source": "Windows.Terminal.Azure"
+                 }
+             ]
+         },
+     ```
+
+   - [ ] And also we need to modify default profile line addressing whichever we want:
+
+     ```json
+      "defaultProfile": "{12396def-8d0e-4ab1-a9cf-3d842633ca92}",
+      // please note that this is git zsh entry's guid number we set in the settings.json file above.
+      // if you modified the number, make sure to set the same value here as well
+     ```
+
+     Save the settings.json file, if there are syntax any errors, e.g. comma, double quote, parenthesis,  windows terminal will warn you about this. If no errors then windows terminal will refresh itself with the settings we did. You can change this options any time by editing settings file.
+
+     > *Note: To see what are the default options for windows terminal, just hold* `Alt` *key while clicking setting on windows terminal window. Yo may take a look at all default values for the terminal.* 
+
+*You can download ubuntu icon file here: [Ubuntu Circle of Friends set for web (513 KB)](https://assets.ubuntu.com/v1/9fbc8a44-circle-of-friends-web.zip)*
+
+ <a href="https://assets.ubuntu.com/v1/9fbc8a44-circle-of-friends-web.zip" title="Image from design.ubuntu.com"><img src="https://assets.ubuntu.com/v1/1be42010-cof_orange_hex.jpg" width="128" alt="Ubuntu official logo" style="zoom: 67%;" /></a>
+
+*For the glossy ubuntu icon you can find it [here](https://www.file-extensions.org/ubuntu-file-extensions)* 
+
+<img src="https://www.file-extensions.org/imgs/app-icon/128/6909/ubuntu-icon.png" alt="Glossy ubuntu icon" style="zoom:80%;"/>
+
+
+  - If you also would like to install Cmder Mini on Windows 10, please follow the instructions for Windows 8.1 and Windows 7 below.
+
+### Windows 8.1 and Windows 7
+
+- Install Cmder Mini
+
+  - [ ] Open `powershell.exe` or `cmd.exe` with **elevated rights** (click start and type `powershell.exe` or `cmd.exe` then click the application with `ctrl+shift` pressed), and run
+
+    ```powershell
+    choco install cmdermini -y
+    ```
+
+    or download cmder mini from cmder web site: https://cmder.net/
+
+    <img src="./assets/cmder_mini.png" alt="cmder mini" style="zoom: 80%;" />
+
+### macOS
+
+- Install iterm2
+
+  - [ ] `brew install iterm2`
+
+    or download iterm2 from its website: https://iterm2.com/
+
+    <img src="./assets/iterm2.png" alt="iterm2" style="zoom: 50%;" />
+
+  > *macOS comes with stock "Terminal.app", but it is recommended to install iterm2.*
+
+### Linux
+
+- No need to install terminal emulator, you can use stock [Gnome Terminal.](https://www.wikiwand.com/en/GNOME_Terminal)
+
 ## Shell Setup
 
 ### - Install zsh
@@ -215,17 +439,61 @@ Let's define our roadmap of our development environment for those operating syst
 
   - [ ] Open `git-bash.exe` with **elevated rights** (click start and type `git bash` then click the application with `ctrl+shift` pressed) and run`pacman -S zsh --noconfirm --overwrite='*'`.
 
-    > *Please note that, in order to run above command, you should have [configured git for windows](#Configure Git for Windows).* 
+    > *Please note that, in order to run above command, you should have* [configured git for windows](#Configure Git for Windows).
   
 - [ ] Open Windows Terminal from start menu, and select Ubuntu 20.04 from the list at the tab bar of the application, and run `sudo apt install zsh -y`
   
-    > *Please note that, in order to run above command, you should have configured Windows Terminal and WSL Ubuntu on [Terminal Emulator Windows 10 Section](#Terminal Emulator).*
+    > *Please note that, in order to run above command, you should have configured Windows Terminal and WSL Ubuntu on* [Terminal Emulator Windows 10 Section](#Terminal Emulator).
+
+  - [ ] Update WSL Ubuntu repository database and pre-installed applications by typing following command on Ubuntu console:
+
+        ```bash
+        sudo apt update && sudo apt upgrade && sudo apt autoremove -y
+        ```
+
+- [ ] Changing directory colors:
+
+    *Please check ls output colors in ntfs partitions, e.g. your user profile directory on windows, you may see some file's colors as inverted when you run* `ls` *command. The default colors used in* `ls`, *we have some bad background highlighting issues, let's fix that. Open Ubuntu-20.04 app* 
+
+    - [ ] Create a `.dircolors` file as follows: `dircolors -p > ~/.dircolors`
+
+      You now have a .dircolors file containing the color configuration for `ls`, which is stored in the env variable LS_COLORS. What we need to do next is make a change to the colors, and save it back to LS_COLORS.
+
+    - [ ] Run`nano ~/.dircolors` , and modify with the settings below. We're removing the background from OTHER_WRITABLE, and fixing the font color for the rest:
+
+      Change `SETUID` to: `SETUID 00;30;41`
+
+      Change `SETGID` to: `SETUID 00;30;43`
+
+      Change `CAPABILITY` to: `CAPABILITY 00;30;41`
+
+      Change `STICKY_OTHER_WRITABLE` to: `STICKY_OTHER_WRITABLE 00;30;42`
+
+      Change `OTHER_WRITABLE` to: `OTHER_WRITABLE 01;32`
+
+      Change `STICKY` to: `STICKY 00;30;44`
+
+      Save and exit `CTRL+X`and confirm changes.       
+
+      - [ ] Edit `nano ~/.zshrc` and add the following line:  *please note to the back ticks* (`) *not single quote*(')
+
+      ```bash
+      eval `dircolors ~/.dircolors`
+      ```
+
+      or execute following command:
+
+      ```bash
+      sed -i '0,/^$/s//\neval `dircolors ~\/.dircolors`\n/g' ~/.zshrc
+      ```
+
+      
 
 - **Windows 7,  8.1**
 
   - [ ] Open `git-bash.exe` with **elevated rights** (click start and type `git bash` then click the application with `ctrl+shift` and run`pacman -S zsh --noconfirm --overwrite='*'` 
 
-    > *Please note that, in order to run above command, you should have [configured git for windows](#Configure Git for Windows).*
+    > *Please note that, in order to run above command, you should have* [configured git for windows](#Configure Git for Windows).
   
 - **macOS**
 
@@ -247,7 +515,7 @@ Installation instructions in this section applies to all operating systems, plea
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   ```
 
-*This will clone the repo and replace the existing* `~/.zshrc` *with a template from [oh-my-zsh.*](https://ohmyz.sh/)
+*This will clone the repository and replace the existing* `~/.zshrc` *with a template from* [oh-my-zsh](https://ohmyz.sh/)
 
 <img src="./assets/ohmzsh.png" alt="oh-my-zsh" style="zoom: 67%;" />
 
@@ -365,258 +633,6 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 
 
-## Terminal Emulator
-
-### - Windows 10
-
-  - **WSL Ubuntu 20.04 Setup**
-
-    Before installing any Linux distributions on Windows, you must enable the "Windows Subsystem for Linux" optional feature.
-
-    - [ ] Install the Windows Subsystem for Linux
-
-      - [ ] Open `powershell.exe` with **[elevated rights](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)** (click start and type `powershell.exe` then click the application with `ctrl+shift` pressed) and run following commands:
-
-        ```powershell
-        dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-        dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-        Restart-Computer
-        ```
-
-  - [ ] Set WSL 2 as your default version
-
-    ```powershell
-    wsl --set-default-version 2
-    ```
-
-  - [ ] Install WSL Ubuntu from the Windows Store. ([Ubuntu-20.04](https://aka.ms/wslubuntu2004))
-
-    <img src="D:\projects\_cw\clarusway-devenv\assets\ubuntu_ws.png" alt="ubuntu_ws" style="zoom:50%;" />
-
-    <img src="D:\projects\_cw\clarusway-devenv\assets\ubuntu_ws2.png" alt="ubuntu_ws2" style="zoom: 50%;" />
-
-  - [ ] or download via powershell or curl:
-
-    ```powershell
-    Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile Ubuntu2004.appx -UseBasicParsing
-    ```
-    
-    ```bash
-    curl -L -o Ubuntu-2004.appx https://aka.ms/wslubuntu2004
-    ```
-
-​    to install manually downloaded appx package:
-
-    ```powershell
-    Add-AppxPackage .\Ubuntu2004.appx
-    ```
-
-  - [ ] Launch `Ubuntu2004.exe` and do initial user name, and password stuff: (you will need this password when you need root access on WSL Ubuntu)
-
-    ![Initial Setup](https://docs.microsoft.com/en-us/windows/wsl/media/ubuntuinstall.png)
-
-    Right click on the title bar, select Defaults:
-    Under the Options tab, select `Use Ctrl+Shift+C/V as Copy/Paste`
-
-  - [ ] Update WSL Ubuntu repository database and pre-installed applications by typing following command on Ubuntu console:
-
-    ```bash
-    sudo apt update && sudo apt upgrade && sudo apt autoremove -y
-    ```
-
-- [ ] Changing directory colors:
-
-  *Please check ls output colors in ntfs partitions, e.g. your user profile directory on windows, you may see some file's colors as inverted when you run* `ls` *command. The default colors used in* `ls`, *we have some bad background highlighting issues, let's fix that. Open Ubuntu-20.04 app* 
-
-  - [ ] Create a `.dircolors` file as follows: `dircolors -p > ~/.dircolors`
-
-    You now have a .dircolors file containing the color configuration for `ls`, which is stored in the env variable LS_COLORS. What we need to do next is make a change to the colors, and save it back to LS_COLORS.
-
-  - [ ] Run`nano ~/.dircolors` , and modify with the settings below. We're removing the background from OTHER_WRITABLE, and fixing the font color for the rest:
-
-    Change `SETUID` to: `SETUID 00;30;41`
-
-    Change `SETGID` to: `SETUID 00;30;43`
-
-    Change `CAPABILITY` to: `CAPABILITY 00;30;41`
-
-    Change `STICKY_OTHER_WRITABLE` to: `STICKY_OTHER_WRITABLE 00;30;42`
-
-    Change `OTHER_WRITABLE` to: `OTHER_WRITABLE 01;32`
-
-    Change `STICKY` to: `STICKY 00;30;44`
-
-    Save and exit `CTRL+X`and confirm changes.       
-
-    - [ ] Edit `nano ~/.zshrc` and add the following line:  *please note to the back ticks* (`) *not single quote*(')
-
-    ```bash
-    eval `dircolors ~/.dircolors`
-    ```
-
-    - [ ] Save file and close nano and restart Ubuntu-20.04
-
-  - [ ] Please follow [Shell Setup](#shell-setup) above in order to have zsh and oh-my-zsh and powerlevel10k theme triology on WSL Ubuntu as well.
-
- - **Windows Terminal**
-
-    - [ ] Install Windows Terminal from the [Windows Store](https://aka.ms/terminal). 
-
-    - [ ] or via powershell:
-
-      ```powershell
-      Invoke-WebRequest -Uri https://github.com/microsoft/terminal/releases/download/v1.4.3243.0/Microsoft.WindowsTerminal_1.4.3243.0_8wekyb3d8bbwe.msixbundle -OutFile wt.msixbundle -UseBasicParsing
-      
-      Add-AppxPackage .\wt.msixbundle
-      ```
-      
-      <img src="./assets/win_term_ws.png" alt="win_term_ws" style="zoom:50%;" />
-      
-      <img src="./assets/win_term_ws2.png" alt="win_term_ws2" style="zoom:50%;" />
-    
-    Windows Terminal is configured for the build-in cmd.exe, powershell.exe and wsl ubuntu automatically. However we still need to change default fonts and some stuff to beautify our terminal, and also we need to add git bash and git zsh entries to windows terminal setting file. Let's do that.
-    
-    - [ ] For your convenience, prior to setting up windows terminal, it is advised to install visual studio code, since you can use vscode to edit configuration easily, vscode will autocomplete while you are typing some values for windows terminal. See [Other tools](#Other tools) for details.
-    
-    - [ ] Open windows terminal app.
-    
-      ![image-20201230152636302](./assets/win_term1.png)
-    
-    - [ ] Open Windows Terminal setting.json as seen above. Default editor will open setting.json file.
-    
-      ```json
-          {
-            "defaults": {
-              // Put settings here that you want to apply to all profiles.
-                  "startingDirectory": "$HOME",
-                  "fontFace": "MesloLGS NF", // "JetBrainsMono NF"  // "FiraCode NF"
-                  "fontSize": 16,
-                  "fontWeight": "semi-light",
-                  "cursorColor" : "#FFFFFF",
-                  "cursorShape" : "bar",
-                  "historySize" : 9001,
-                  "padding": "6, 2",
-                  "backgroundImage": "%USERPROFILE%\\Pictures\\cwlogo106.png",
-                // please copy this image from assets directory to your pictures folder
-                  "backgroundImageAlignment": "bottomRight",
-                  "backgroundImageStretchMode": "none",
-                  "backgroundImageOpacity": 0.5
-            },
-              "list":
-              [
-                 {
-                      "guid": "{12396def-8d0e-4ab1-a9cf-3d842633ca92}", // this is a random hexadecimal number group feel free to change whatever you want
-                     // please note that this numbers should be unique to each entry on windows terminal list here
-                     // and we will use this guid to address default shell at windows terminal start
-                      "closeOnExit" : true,
-                      "commandline" : "\"%PROGRAMFILES%\\git\\bin\\bash.exe\" --login -i -l -c 'exec zsh'",
-                      "startingDirectory": "$HOME",
-                      "icon" : "%PROGRAMFILES%\\git\\mingw64\\share\\git\\git-for-windows.ico",
-                      "name" : "Git Zsh"
-                  },           {
-                      "guid": "{45696bce-8d0e-4ab1-a9cf-3d842633ca92}",
-                      "closeOnExit" : true,
-                      "commandline" : "\"%PROGRAMFILES%\\git\\bin\\bash.exe\" --login -i -l",
-                      "cursorColor" : "#FFFFFF",
-                      "cursorShape" : "bar",
-                      "historySize" : 9001,
-                      "padding": "4, 4",
-                      "startingDirectory": "$HOME",
-                      "icon" : "%PROGRAMFILES%\\git\\mingw64\\share\\git\\git-for-windows.ico",
-                      "name" : "Git Bash"
-                  },
-                  {
-                      "guid": "{18c52f4f-de2c-5db4-bd2d-ba144ed6c273}",
-                      "hidden": false,
-                      "name": "Ubuntu-20.04 Zsh",
-                      "tabTitle": "Zsh",
-                      "icon": "%USERPROFILE%\\Pictures\\ubuntu.png", // you may delete this line if you like penguin icon 🐧
-                      "commandline" : "wsl --distribution Ubuntu-20.04 zsh"
-                  },
-                  {
-                      "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
-                      "hidden": false,
-                      "name": "Ubuntu-20.04",
-                      "icon": "%USERPROFILE%\\Pictures\\ubuntu1.png", // you may delete this line if you like penguin icon 🐧                
-                      "source": "Windows.Terminal.Wsl"
-                  },
-                  {
-                      // Make changes here to the powershell.exe profile.
-                      "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                      "name": "Windows PowerShell",
-                      "commandline": "powershell.exe -NoLogo",
-                      "colorScheme": "Campbell Powershell",
-                      "hidden": false
-                  }, 
-                  {
-                      // Make changes here to the cmd.exe profile.
-                      "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                      "name": "Command Prompt",
-                      "commandline": "cmd.exe /k cls",
-                      "hidden": false
-                  },
-                  {
-                      "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-                      "hidden": true,
-                      "name": "Azure Cloud Shell",
-                      "source": "Windows.Terminal.Azure"
-                  }
-              ]
-          },
-      ```
-    
-    - [ ] And also we need to modify default profile line addressing whichever we want:
-    
-      ```json
-       "defaultProfile": "{12396def-8d0e-4ab1-a9cf-3d842633ca92}",
-       // please note that this is git zsh entry's guid number we set in the settings.json file above.
-       // if you modified the number, make sure to set the same value here as well
-      ```
-    
-      Save the settings.json file, if there are syntax any errors, e.g. comma, double quote, parenthesis,  windows terminal will warn you about this. If no errors then windows terminal will refresh itself with the settings we did. You can change this options any time by editing settings file.
-    
-      > *Note: To see what are the default options for windows terminal, just hold `Alt` key while clicking setting on windows terminal window. Yo may take a look at all default values for the terminal.* 
-
-*You can download ubuntu icon file here: [Ubuntu Circle of Friends set for web (513 KB)](https://assets.ubuntu.com/v1/9fbc8a44-circle-of-friends-web.zip)*
-
- <a href="https://assets.ubuntu.com/v1/9fbc8a44-circle-of-friends-web.zip" title="Image from design.ubuntu.com"><img src="https://assets.ubuntu.com/v1/1be42010-cof_orange_hex.jpg" width="128" alt="Ubuntu official logo" style="zoom: 67%;" /></a>
-
-*For the glossy ubuntu icon you can find it [here](https://www.file-extensions.org/ubuntu-file-extensions)* 
-
-<img src="https://www.file-extensions.org/imgs/app-icon/128/6909/ubuntu-icon.png" alt="Glossy ubuntu icon" style="zoom:80%;"/>
-
-
-  - If you also would like to install Cmder Mini on Windows 10, please follow the instructions for Windows 8.1 and Windows 7 below.
-
-### Windows 8.1 and Windows 7
-
-- Install Cmder Mini
-  - [ ] Open `powershell.exe` or `cmd.exe` with **elevated rights** (click start and type `powershell.exe` or `cmd.exe` then click the application with `ctrl+shift` pressed), and run
-
-    ```powershell
-    choco install cmdermini -y
-    ```
-    
-    or download cmder mini from cmder web site: https://cmder.net/
-    
-    <img src="./assets/cmder_mini.png" alt="cmder mini" style="zoom: 80%;" />
-
-### macOS
-
-- Install iterm2
-  
-  - [ ] `brew install iterm2`
-  
-    or download iterm2 from its website: https://iterm2.com/
-  
-    <img src="./assets/iterm2.png" alt="iterm2" style="zoom: 50%;" />
-  
-  > *macOS comes with stock "Terminal.app", but it is recommended to install iterm2.*
-
-### Linux
-
-- No need to install terminal emulator, you can use stock [Gnome Terminal.](https://www.wikiwand.com/en/GNOME_Terminal)
-
 ## Other tools
 
   - Install Openssh (Windows 8.1 and 7 only, others have by default)
@@ -657,7 +673,42 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
     Let's configure vscode integrated terminal on windows to use git zsh. Open vscode, then bring up settings, and then click on upper right icon to see settings.json in text mode.
 
-    
+    ```json
+    {
+        "editor.fontFamily": "'FiraCode NF','JetBrains Mono', Consolas, 'Courier New', monospace",
+        "editor.fontSize": 16,
+        "editor.lineHeight": 24,
+        "editor.fontWeight": "400",
+        "editor.fontLigatures": true, 
+        "editor.renderWhitespace": "none",
+        "editor.suggestSelection": "first",
+        "editor.minimap.enabled": false,
+        "editor.cursorStyle": "line-thin",
+        "editor.wordWrapColumn": 120,
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.mouseWheelZoom": true,
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true,
+        "breadcrumbs.enabled": true,
+        "terminal.integrated.fontFamily": "MesloLGS NF",
+        "terminal.integrated.fontSize": 18,
+        "terminal.integrated.cursorStyle": "line",
+        "terminal.integrated.cursorBlinking": true,
+        "terminal.integrated.env.windows": {"TERM": "xterm-256color"},
+        "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+        "terminal.integrated.shellArgs.windows": ["--command=../usr/bin/zsh.exe", "-i"],
+        "terminal.integrated.cwd": "${fileDirname}",
+        "terminal.integrated.drawBoldTextInBrightColors": false,
+        "terminal.integrated.enableBell": true,
+        "terminal.integrated.fontWeight": "300",
+        "terminal.integrated.fontWeightBold": "400",
+        "terminal.integrated.mouseWheelScrollSensitivity": 2,
+        "terminal.integrated.scrollback": 5000,
+        "window.zoomLevel": 0,
+    }
+    ```
+
+    ![vscodefinish](./assets/vscodefinish.gif)
 
 - Screen capture tools
 
@@ -695,8 +746,10 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
   
   <img src="./assets/lightshot.png" alt="lightshot" style="zoom:67%;" />
 
-> *You can download some of the image files in [assets](./assets) folder of this repository.*
+> *You can download some of the image files in* [assets](./assets) *folder of this repository.*
 
 If you successfully applied the settings explained in this article, You should be using zsh as shell with oh-my-zsh and powerlevel10k and some helper plugins installed, you should see beautiful shell command prompt in your terminal application. 
+
+
 
 Please feel free to ask, comment and contribute ❤
