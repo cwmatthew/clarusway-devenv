@@ -113,14 +113,14 @@ Let's define our roadmap of our development environment for those operating syst
   - Download files below: 
     - [ ] pacman, https://repo.msys2.org/msys/x86_64/pacman-5.2.2-4-x86_64.pkg.tar.xz
     - [ ] keyring,https://repo.msys2.org/msys/x86_64/msys2-keyring-1~20201002-1-any.pkg.tar.xz
-    - [ ] repository mirror list, [pacman mirror list files](./assets/mirrorlists.zip?raw=true)
+    - [ ] repository mirror list, [pacman mirror list files](./mirrorlists.zip?raw=true)
   
 - For 32 bit Windows Systems(x86):
 
   - Download files below:
     - [ ] pacman, https://repo.msys2.org/msys/i686/pacman-5.2.2-4-i686.pkg.tar.xz
     - [ ] keyring,https://repo.msys2.org/msys/x86_64/msys2-keyring-1~20201002-1-any.pkg.tar.xz
-    - [ ] repository mirror list, [pacman mirror list files](./assets/mirrorlists.zip?raw=true)
+    - [ ] repository mirror list, [pacman mirror list files](./mirrorlists.zip?raw=true)
   
 - For the both architecture:
 
@@ -348,6 +348,8 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
     > <img src="./assets/redundant_solution_w7.png" alt="Redundant percent sign solution" style="zoom:67%;" />
     >
     > *source: https://superuser.com/a/645612*
+
+
 
 ## Terminal Emulator
 
@@ -638,6 +640,10 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
     You can also download visual studio code from Microsoft: https://code.visualstudio.com/
 
     <img src="./assets/vscodedownload.png" alt="vscode download" style="zoom:80%;" />
+
+    Let's configure vscode integrated terminal on windows to use git zsh. Open vscode, then bring up settings, and then click on upper right icon to see settings.json in text mode.
+
+    
 
 - Screen capture tools
 
