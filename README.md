@@ -279,95 +279,89 @@ Installation instructions in this section applies to all operating systems, plea
 
     <img src="./assets/powerlevel10k.png" alt="powerlevel10k" style="zoom:67%;" />
     
-
-
     - [ ] Run following command on bash/zsh shell terminal windows on your computer:
 
-    ```bash
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-    ```
+
+```bash
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+```
+
+- [ ] Open your git bash terminal and  in the terminal, execute following commands to set your zsh theme to powerlevel10k and activate plugins just installed above:
+
+  ```bash
+  sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/g' ~/.zshrc
+  sed -i 's/plugins=[(]git[)]/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
+  ```
+
+  or you may run `nano ~/.zshrc` in the terminal, find the line below and manually replace it with the second line(if you ran the two lines above, it is already done 😉):
 
 
-    - [ ] Open your git bash terminal and  in the terminal, execute following commands to set your zsh theme to powerlevel10k and activate plugins just installed above:
+```bash
+ZSH_THEME="robbyrussell"
 
+ZSH_THEME="powerlevel10k/powerlevel10k"
+```
 
-      ```bash
-      sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/g' ~/.zshrc
-      sed -i 's/plugins=[(]git[)]/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
-      ```
+<img src="./assets/zshtheme.png" alt="zsh theme setting" style="zoom:67%;" />  
 
-      or you may run `nano ~/.zshrc` in the terminal, find the line below and manually replace it with the second line(if you ran the two lines above, it is already done 😉):
+and manually change the line for plugins  as below:
     
-      ```bash
-      ZSH_THEME="robbyrussell"
-      ```
 
-      ```bash
-      ZSH_THEME="powerlevel10k/powerlevel10k"
-      ```
-    
-      <img src="./assets/zshtheme.png" alt="zsh theme setting" style="zoom:67%;" />
-    
-  and manually change the line for plugins  as below:
-    
-      ```bash
-      plugins=(git)
-      ```
+```bash
+plugins=(git)
 
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+```
 
-      ```bash
-      plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
-      ```
+<img src="./assets/plugins.png" alt="plugins" style="zoom:67%;" />
 
+  Save and exit nano editor with `CTRL+X` and confirm changes.
 
-      <img src="./assets/plugins.png" alt="plugins" style="zoom:67%;" />
-    
-      Save and exit nano editor with `CTRL+X` and confirm changes.
-    
-    - [ ] Run `source ¨/.zshrc` command to update your terminal settings. Powerlevel10K initial setup p10k configure command will check some symbols visibility and configure look and feel as your preference. Recommended font for the terminal is MesloLGS NF, download links above.  For further details, please visit [Powerlevel10k repository](https://github.com/romkatv/powerlevel10k).
-    
-      ![Zsh vs Bash in Windows 7](./assets/win7_cmder_zsh_bash.png)
-    
-      *Powerlevel10k zsh vs bare bash console in windows 7 on cmder at git for windows*
- 
+- [ ] Run `source ¨/.zshrc` command to update your terminal settings. Powerlevel10K initial setup p10k configure command will check some symbols visibility and configure look and feel as your preference. Recommended font for the terminal is MesloLGS NF, download links above.  For further details, please visit [Powerlevel10k repository](https://github.com/romkatv/powerlevel10k).
+
+  ![Zsh vs Bash in Windows 7](./assets/win7_cmder_zsh_bash.png)
+
+  *Powerlevel10k zsh vs bare bash console in windows 7 on cmder at git for windows*
+
    
-    - [ ] My preferred powerlevel10k setup is as follows: ( You can reconfigure any time by `p10k configure`)
-    
-      - Prompt Style :point_right: (1) Lean
-      - Character Set :point_right: (1) Unicode
-      - Prompt Colors :point_right: (1) 256 colors
-      - Show current time? :point_right: (1) No.
-      - Prompt Height :point_right: (2) Two lines.
-      - Prompt Connection:point_right: (1) Disconnected
-      - Prompt Frame:point_right: (1) No frame.
-      - Prompt Spacing:point_right: (1) Compact.
-      - Icons :point_right: (2) Many icons.
-      - Prompt Flow:point_right: (1) Concise.
-      - Enable Transient Prompt :point_right: (y) Yes.
-      - Instant Prompt Mode :point_right: (2) Quiet
-      - Final confirmation :point_right: (y) Yes.
-    
-    > *Note: At the integrated terminal on visual studio code in windows 7, you may see redundant percent sign (%) on some terminals above the current prompt line.*
-    >
-    > <img src="./assets/vscode-terminal.png" alt="Redundant percent sign" style="zoom: 80%;" />
-    >
-    > *To solve this redundancy enter following lines of commands in git bash or zsh shell:*
-    >
-    > ```bash
-    > sed -i '0,/^$/s//\nsetopt PROMPT_CR\nsetopt PROMPT_SP\nexport PROMPT_EOL_MARK=""\n/g' ~/.zshrc
-    > ```
-    >
-    > *or you can manually add below lines into ~/.zshrc file  just after p10k-instant-prompt block below:*
-    >
-    > ```shell
-    > setopt PROMPT_CR
-    > setopt PROMPT_SP
-    > export PROMPT_EOL_MARK=""
-    > ```
-    >
-    > <img src="./assets/redundant_solution_w7.png" alt="Redundant percent sign solution" style="zoom:67%;" />
-    >
-    > *source: https://superuser.com/a/645612*
+
+- [ ] My preferred powerlevel10k setup is as follows: ( You can reconfigure any time by `p10k configure`)
+
+  - Prompt Style :point_right: (1) Lean
+  - Character Set :point_right: (1) Unicode
+  - Prompt Colors :point_right: (1) 256 colors
+  - Show current time? :point_right: (1) No.
+  - Prompt Height :point_right: (2) Two lines.
+  - Prompt Connection:point_right: (1) Disconnected
+  - Prompt Frame:point_right: (1) No frame.
+  - Prompt Spacing:point_right: (1) Compact.
+  - Icons :point_right: (2) Many icons.
+  - Prompt Flow:point_right: (1) Concise.
+  - Enable Transient Prompt :point_right: (y) Yes.
+  - Instant Prompt Mode :point_right: (2) Quiet
+  - Final confirmation :point_right: (y) Yes.
+
+> *Note: At the integrated terminal on visual studio code in windows 7, you may see redundant percent sign (%) on some terminals above the current prompt line.*
+>
+> <img src="./assets/vscode-terminal.png" alt="Redundant percent sign" style="zoom: 80%;" />
+>
+> *To solve this redundancy enter following lines of commands in git bash or zsh shell:*
+>
+> ```bash
+> sed -i '0,/^$/s//\nsetopt PROMPT_CR\nsetopt PROMPT_SP\nexport PROMPT_EOL_MARK=""\n/g' ~/.zshrc
+> ```
+>
+> *or you can manually add below lines into ~/.zshrc file  just after p10k-instant-prompt block below:*
+>
+> ```shell
+> setopt PROMPT_CR
+> setopt PROMPT_SP
+> export PROMPT_EOL_MARK=""
+> ```
+>
+> <img src="./assets/redundant_solution_w7.png" alt="Redundant percent sign solution" style="zoom:67%;" />
+>
+> *source: https://superuser.com/a/645612*
 
 
 
@@ -389,89 +383,80 @@ Installation instructions in this section applies to all operating systems, plea
         Restart-Computer
         ```
 
+  - [ ] Set WSL 2 as your default version
 
-      - [ ] Set WSL 2 as your default version
+    ```powershell
+    wsl --set-default-version 2
+    ```
 
+  - [ ] Install WSL Ubuntu from the Windows Store. ([Ubuntu-20.04](https://aka.ms/wslubuntu2004))
 
-        ```powershell
-        wsl --set-default-version 2
-        ```
+    <img src="D:\projects\_cw\clarusway-devenv\assets\ubuntu_ws.png" alt="ubuntu_ws" style="zoom:50%;" />
 
+    <img src="D:\projects\_cw\clarusway-devenv\assets\ubuntu_ws2.png" alt="ubuntu_ws2" style="zoom: 50%;" />
 
-      - [ ] Install WSL Ubuntu from the Windows Store. ([Ubuntu-20.04](https://aka.ms/wslubuntu2004))
-    
-        <img src="D:\projects\_cw\clarusway-devenv\assets\ubuntu_ws.png" alt="ubuntu_ws" style="zoom:50%;" />
-    
-        <img src="D:\projects\_cw\clarusway-devenv\assets\ubuntu_ws2.png" alt="ubuntu_ws2" style="zoom: 50%;" />
-    
-      - [ ] or download via powershell or curl:
-    
-        ```powershell
-        Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile Ubuntu2004.appx -UseBasicParsing
-        ```
+  - [ ] or download via powershell or curl:
 
+    ```powershell
+    Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile Ubuntu2004.appx -UseBasicParsing
+    ```
+    
+    ```bash
+    curl -L -o Ubuntu-2004.appx https://aka.ms/wslubuntu2004
+    ```
 
-        ```bash
-        curl -L -o Ubuntu-2004.appx https://aka.ms/wslubuntu2004
-        ```
+​    to install manually downloaded appx package:
 
+    ```powershell
+    Add-AppxPackage .\Ubuntu2004.appx
+    ```
 
-        to install manually downloaded appx package:
+  - [ ] Launch `Ubuntu2004.exe` and do initial user name, and password stuff: (you will need this password when you need root access on WSL Ubuntu)
 
+    ![Initial Setup](https://docs.microsoft.com/en-us/windows/wsl/media/ubuntuinstall.png)
 
-        ```powershell
-        Add-AppxPackage .\Ubuntu2004.appx
-        ```
+    Right click on the title bar, select Defaults:
+    Under the Options tab, select `Use Ctrl+Shift+C/V as Copy/Paste`
 
+  - [ ] Update WSL Ubuntu repository database and pre-installed applications by typing following command on Ubuntu console:
 
-      - [ ] Launch `Ubuntu2004.exe` and do initial user name, and password stuff: (you will need this password when you need root access on WSL Ubuntu)
-    
-        ![Initial Setup](https://docs.microsoft.com/en-us/windows/wsl/media/ubuntuinstall.png)
-    
-        Right click on the title bar, select Defaults:
-        Under the Options tab, select `Use Ctrl+Shift+C/V as Copy/Paste`
-    
-      - [ ] Update WSL Ubuntu repository database and pre-installed applications by typing following command on Ubuntu console:
+    ```bash
+    sudo apt update && sudo apt upgrade && sudo apt autoremove -y
+    ```
 
+- [ ] Changing directory colors:
 
-        ```bash
-        sudo apt update && sudo apt upgrade && sudo apt autoremove -y
-        ```
+  *Please check ls output colors in ntfs partitions, e.g. your user profile directory on windows, you may see some file's colors as inverted when you run* `ls` *command. The default colors used in* `ls`, *we have some bad background highlighting issues, let's fix that. Open Ubuntu-20.04 app* 
 
+  - [ ] Create a `.dircolors` file as follows: `dircolors -p > ~/.dircolors`
 
-    - [ ] Changing directory colors:
-    
-      *Please check ls output colors in ntfs partitions, e.g. your user profile directory on windows, you may see some file's colors as inverted when you run* `ls` *command. The default colors used in* `ls`, *we have some bad background highlighting issues, let's fix that. Open Ubuntu-20.04 app* 
-    
-      - [ ] Create a `.dircolors` file as follows: `dircolors -p > ~/.dircolors`
-    
-        You now have a .dircolors file containing the color configuration for `ls`, which is stored in the env variable LS_COLORS. What we need to do next is make a change to the colors, and save it back to LS_COLORS.
-    
-      - [ ] Run`nano ~/.dircolors` , and modify with the settings below. We're removing the background from OTHER_WRITABLE, and fixing the font color for the rest:
-    
-        Change `SETUID` to: `SETUID 00;30;41`
-    
-        Change `SETGID` to: `SETUID 00;30;43`
-    
-        Change `CAPABILITY` to: `CAPABILITY 00;30;41`
-    
-        Change `STICKY_OTHER_WRITABLE` to: `STICKY_OTHER_WRITABLE 00;30;42`
-    
-        Change `OTHER_WRITABLE` to: `OTHER_WRITABLE 01;32`
-    
-        Change `STICKY` to: `STICKY 00;30;44`
-    
-        Save and exit `CTRL+X`and confirm changes.       
-    
-        - [ ] Edit `nano ~/.zshrc` and add the following line:  *please note to the back ticks* (`) *not single quote*(')
-    
-        ```bash
-        eval `dircolors ~/.dircolors`
-        ```
-    
-        - [ ] Save file and close nano and restart Ubuntu-20.04
-    
-      - [ ] Please follow [Shell Setup](#shell-setup) above in order to have zsh and oh-my-zsh and powerlevel10k theme triology on WSL Ubuntu as well.
+    You now have a .dircolors file containing the color configuration for `ls`, which is stored in the env variable LS_COLORS. What we need to do next is make a change to the colors, and save it back to LS_COLORS.
+
+  - [ ] Run`nano ~/.dircolors` , and modify with the settings below. We're removing the background from OTHER_WRITABLE, and fixing the font color for the rest:
+
+    Change `SETUID` to: `SETUID 00;30;41`
+
+    Change `SETGID` to: `SETUID 00;30;43`
+
+    Change `CAPABILITY` to: `CAPABILITY 00;30;41`
+
+    Change `STICKY_OTHER_WRITABLE` to: `STICKY_OTHER_WRITABLE 00;30;42`
+
+    Change `OTHER_WRITABLE` to: `OTHER_WRITABLE 01;32`
+
+    Change `STICKY` to: `STICKY 00;30;44`
+
+    Save and exit `CTRL+X`and confirm changes.       
+
+    - [ ] Edit `nano ~/.zshrc` and add the following line:  *please note to the back ticks* (`) *not single quote*(')
+
+    ```bash
+    eval `dircolors ~/.dircolors`
+    ```
+
+    - [ ] Save file and close nano and restart Ubuntu-20.04
+
+  - [ ] Please follow [Shell Setup](#shell-setup) above in order to have zsh and oh-my-zsh and powerlevel10k theme triology on WSL Ubuntu as well.
 
  - **Windows Terminal**
 
