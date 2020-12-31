@@ -225,9 +225,20 @@ Let's define our roadmap of our development environment for those operating syst
 
     - [ ] Set WSL 2 as your default version
 
-          ```powershell
-      wsl --set-default-version 2
-          ```
+```powershell
+wsl --set-default-version 2
+```
+
+This will require you to update WSL linux kernel you can download from [Microsoft](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi) . If you dismissed to upgrade to version 2, it is not a big deal WSL still works, but the version 2 is optimized compared to version 1. Later on you can upgrade your ubuntu WSL version by typing the command below:
+
+```powershell
+wsl --set-version Ubuntu-20.04 2
+# update Ubuntu-20.04 if you installed different distribution
+# you can see which distributions are installed and their versions by typing:
+wsl -l -v
+```
+
+
 
   - [ ] Install WSL Ubuntu from the Windows Store. ([Ubuntu-20.04](https://aka.ms/wslubuntu2004))
 
@@ -437,17 +448,16 @@ Add-AppxPackage .\Ubuntu2004.appx
 
     > *Please note that, in order to run above command, you should have* [configured git for windows](#Configure Git for Windows).
   
-- [ ] Open Windows Terminal from start menu, and select Ubuntu 20.04 from the list at the tab bar of the application, and run `sudo apt install zsh -y`
-  
-    > *Please note that, in order to run above command, you should have configured Windows Terminal and WSL Ubuntu on* [Terminal Emulator Windows 10 Section](#Terminal Emulator).
+- [ ] Open Windows Terminal from start menu, and select Ubuntu 20.04 from the list at the tab bar of the application, update WSL Ubuntu repository database and pre-installed applications by typing following command on Ubuntu console:
 
-  - [ ] Update WSL Ubuntu repository database and pre-installed applications by typing following command on Ubuntu console:
+  ```bash
+  sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y
+  ```
 
-    ```bash
-    sudo apt update && sudo apt upgrade && sudo apt autoremove -y
-    ```
+- [ ] And run `sudo apt install zsh -y`
 
-    
+
+> *Please note that, in order to run above command, you should have installed WSL Ubuntu and configured Windows Terminal on* [Terminal Emulator Windows 10 Section](#Terminal Emulator).
 
 - [ ] Changing directory colors:
 
@@ -471,9 +481,9 @@ Add-AppxPackage .\Ubuntu2004.appx
 
       Change `STICKY` to: `STICKY 00;30;44`
 
-      Save and exit `CTRL+X`and confirm changes.       
+      Save and exit `CTRL+X`and confirm changes. 
 
-      - [ ] Edit `nano ~/.zshrc` and add the following line:  *please note to the back ticks* (`) *not single quote*(')
+      - [ ] To make this settings permanent on our shell, we need to add the line below. Edit `nano ~/.zshrc` and add the following line:  *please note to the back ticks* (`) *not single quote*(')
 
       ```bash
       eval `dircolors ~/.dircolors`
@@ -485,7 +495,7 @@ Add-AppxPackage .\Ubuntu2004.appx
       sed -i '0,/^$/s//\neval `dircolors ~\/.dircolors`\n/g' ~/.zshrc
       ```
 
-      
+      > *Please note that:* `.zshrc` *file is per user settings file for zsh,* `.bashrc` *is for bash respectively.*
 
 - **Windows 7,  8.1**
 
