@@ -12,7 +12,7 @@ Users need to install, remove, upgrade, configure and manage software packages. 
 
 Linux distributions usually have their own custom package manager, such as apt and apt-get for Ubuntu/Debian, yum and dnf  for Fedora/Redhat and zypper for OpenSUSE etc. On the macOS side there is a third party community tool called homebrew in short brew. For Windows family, there is also community/proprietary tool named chocolatey and scoop. For Windows package management we will choose chocolatey.
 
-Let's define our roadmap of our development environment for those operating systems. First of all we will install package managers on each OS, and then we will continue to enhance terminal experience with terminal applications, fonts and shells. Some part of this journey shares common steps, so please follow each step one by one.
+Let's define our roadmap of our development environment for those operating systems. First of all we will install package managers on each OS, and then we will continue to enhance terminal experience with terminal applications, fonts and shells. Some part of this journey may share common steps, please follow each step one by one.
 
 
 
@@ -104,9 +104,11 @@ Let's define our roadmap of our development environment for those operating syst
   ```
   
 
+
+
 ## Configure Git for Windows
 
-> If it is not installed yet, you can install with `choco install 7zip -y` on an elevated command prompt/or powershell, or you can download from https://www.7-zip.org/ 
+> *If it is not installed yet, you can install with* `choco install 7zip -y` *on an elevated command prompt/or powershell, or you can download from https://www.7-zip.org/*
 
 - For 64 bit Windows Systems (x86_64) **[How to check](https://www.howtogeek.com/howto/21726/how-do-i-know-if-im-running-32-bit-or-64-bit-windows-answers/)**
 
@@ -160,7 +162,7 @@ Let's define our roadmap of our development environment for those operating syst
     # we are also doing one of major installation at the line above 😉
   ```
   
-  > *Note: If you face any errors during installation of any package with pacman rerun the same install command with `--overwrite='*'` option*
+  > *Note: If you face any errors during installation of any package with pacman rerun the same install command with* `--overwrite='*'` *option*
   
 - [ ] To configure directory mount points, Open `git-bash.exe` with **elevated rights** (click start and type `git bash` then click the application with `ctrl+shift` pressed) and run `nano /etc/fstab`
   
@@ -191,7 +193,7 @@ Let's define our roadmap of our development environment for those operating syst
     - [ ] [MesloLGS NF Italic.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf)
     - [ ] [MesloLGS NF Bold Italic.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf)
     
-      > Note: if you are macOS user and installed iterm2, powerlevel10k setup  `p10k configure` will automatically download MesloLGS NF fonts for you. Simply answer `Yes` when p10k asks you to install Meslo Nerd Font.
+      > *Note: if you are macOS user and installed iterm2, powerlevel10k setup*  `p10k configure` *will automatically download MesloLGS NF fonts for you. Simply answer* `Yes` *when p10k asks you to install Meslo Nerd Font.*
     
   - FiraCode NF: download these four ttf files below and install your OS:
 
@@ -203,7 +205,7 @@ Let's define our roadmap of our development environment for those operating syst
     
     - [ ] [FiraCode NF Medium.ttf](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Medium/complete/Fira%20Code%20Medium%20Nerd%20Font%20Complete%20Windows%20Compatible.ttf)
     
-      > Windows users can install via `choco install firacodenf -y` as well.
+      > *Windows users can install via `choco install firacodenf -y` as well.*
 
 ## Shell Setup
 
@@ -213,17 +215,17 @@ Let's define our roadmap of our development environment for those operating syst
 
   - [ ] Open `git-bash.exe` with **elevated rights** (click start and type `git bash` then click the application with `ctrl+shift` pressed) and run`pacman -S zsh --noconfirm --overwrite='*'`.
 
-    > Please note that, in order to run above command, you should have [configured git for windows](./setup-git-win.md). 
+    > *Please note that, in order to run above command, you should have [configured git for windows](#Configure Git for Windows).* 
   
 - [ ] Open Windows Terminal from start menu, and select Ubuntu 20.04 from the list at the tab bar of the application, and run `sudo apt install zsh -y`
   
-    > Please note that, in order to run above command, you should have configured Windows Terminal and WSL Ubuntu on [Terminal Emulator Windows 10 Section](#Terminal Emulator).
+    > *Please note that, in order to run above command, you should have configured Windows Terminal and WSL Ubuntu on [Terminal Emulator Windows 10 Section](#Terminal Emulator).*
 
 - **Windows 7,  8.1**
 
   - [ ] Open `git-bash.exe` with **elevated rights** (click start and type `git bash` then click the application with `ctrl+shift` and run`pacman -S zsh --noconfirm --overwrite='*'` 
 
-    > Please note that, in order to run above command, you should have [configured git for windows](#Configure Git for Windows).
+    > *Please note that, in order to run above command, you should have [configured git for windows](#Configure Git for Windows).*
   
 - **macOS**
 
@@ -283,26 +285,33 @@ Installation instructions in this section applies to all operating systems, plea
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
     ```
     
-    - [ ] Run `nano ~/.zshrc` in the terminal, find the line below and replace it with the second line:
+    - [ ] Open your git bash terminal and  in the terminal, execute following commands to set your zsh theme to powerlevel10k and activate plugins just installed above:
 
+      ```bash
+      sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/g' ~/.zshrc
+      sed -i 's/plugins=[(]git[)]/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
+  ```
+    
+      or you may run `nano ~/.zshrc` in the terminal, find the line below and manually replace it with the second line(if you ran the two lines above, it is already done 😉):
+    
       ```bash
       ZSH_THEME="robbyrussell"
-      ```
-
+  ```
+    
       ```bash
-    ZSH_THEME="powerlevel10k/powerlevel10k"
-      ```
+      ZSH_THEME="powerlevel10k/powerlevel10k"
+  ```
     
       <img src="./assets/zshtheme.png" alt="zsh theme setting" style="zoom:67%;" />
-
-      and change the line for plugins  as below:
-      
+    
+  and manually change the line for plugins  as below:
+    
       ```bash
-plugins=(git)
+      plugins=(git)
       ```
-      
+    
       ```bash
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+      plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
       ```
     
       <img src="./assets/plugins.png" alt="plugins" style="zoom:67%;" />
@@ -337,7 +346,13 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
     >
     > <img src="./assets/vscode-terminal.png" alt="Redundant percent sign" style="zoom: 80%;" />
     >
-    > *To solve this redundancy enter following lines of commands in .zshrc file just after p10k-instant-prompt block below*
+    > *To solve this redundancy enter following lines of commands in git bash or zsh shell:*
+    >
+    > ```bash
+    > sed -i '0,/^$/s//\nsetopt PROMPT_CR\nsetopt PROMPT_SP\nexport PROMPT_EOL_MARK=""\n/g' ~/.zshrc
+    > ```
+    >
+    > *or you can manually add below lines into ~/.zshrc file  just after p10k-instant-prompt block below:*
     >
     > ```shell
     > setopt PROMPT_CR
@@ -555,13 +570,13 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
     
       ```json
        "defaultProfile": "{12396def-8d0e-4ab1-a9cf-3d842633ca92}",
-       // please note that this is git zsh entry's guid number above.
-       // if you modified the number, make sure to set the same values here as well
+       // please note that this is git zsh entry's guid number we set in the settings.json file above.
+       // if you modified the number, make sure to set the same value here as well
       ```
     
-      Save the settings.json file, if there are syntax any errors, e.g. comma, double quote, paranthesis,  windows terminal will warn you about this. If no errors then windows terminal will refresh itself with the settings we did. You can change this options any time by editing settings file.
+      Save the settings.json file, if there are syntax any errors, e.g. comma, double quote, parenthesis,  windows terminal will warn you about this. If no errors then windows terminal will refresh itself with the settings we did. You can change this options any time by editing settings file.
     
-      > Note: To see what are the default options for windows terminal, just hold `Alt` key while clicking setting on windows terminal window. Yo may take a look at all default values for the terminal. 
+      > *Note: To see what are the default options for windows terminal, just hold `Alt` key while clicking setting on windows terminal window. Yo may take a look at all default values for the terminal.* 
 
 *You can download ubuntu icon file here: [Ubuntu Circle of Friends set for web (513 KB)](https://assets.ubuntu.com/v1/9fbc8a44-circle-of-friends-web.zip)*
 
@@ -597,7 +612,7 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
   
     <img src="./assets/iterm2.png" alt="iterm2" style="zoom: 50%;" />
   
-  > macOS comes with stock "Terminal.app", but it is recommended to install iterm2.
+  > *macOS comes with stock "Terminal.app", but it is recommended to install iterm2.*
 
 ### Linux
 
@@ -663,11 +678,11 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
   ![flameshot](./assets/flameshot.png)
   
-  > Please note that you may see below note on flameshot repository releases page. 
+  > *Please note that you may see below note on flameshot repository releases page.* 
   >
   > *"Current Windows Binaries are not signed but once they are available it will be uploaded here."*
   >
-  > However, windows binaries can be downloaded from previous release.
+  > *However, windows binaries can be downloaded from previous release.*
   
   - macOS
   
@@ -681,6 +696,8 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
   
   <img src="./assets/lightshot.png" alt="lightshot" style="zoom:67%;" />
 
-> You can download some of the image files in [assets](./assets) folder of this repository.
+> *You can download some of the image files in [assets](./assets) folder of this repository.*
+
+If you successfully applied the settings explained in this article, You should be using zsh as shell with oh-my-zsh and powerlevel10k and some helper plugins installed, you should see beautiful shell command prompt in your terminal application. 
 
 Please feel free to ask, comment and contribute ❤
