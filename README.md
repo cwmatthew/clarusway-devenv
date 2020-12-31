@@ -293,14 +293,16 @@ Add-AppxPackage .\Ubuntu2004.appx
 
    Windows Terminal is configured for the build-in cmd.exe, powershell.exe and wsl ubuntu automatically. However we still need to change default fonts and some stuff to beautify our terminal, and also we need to add git bash and git zsh entries to windows terminal settings file. Let's do that.
 
-   - [ ] For your convenience, prior to setting up windows terminal, it is advised to install visual studio code, since you can use vscode to edit configuration easily, vscode will autocomplete while you are typing some values for windows terminal. See [Other tools](#Other tools) for installation details.
+   - [ ] For your convenience, prior to setting up windows terminal, it is advised to install visual studio code, since you can use vscode to edit configuration easily, vscode will autocomplete while you are typing some values for windows terminal. 
+
+     See [Other tools](#Other tools) for installation details.
 
    - [ ] Open windows terminal app.
 
      ![image-20201230152636302](./assets/win_term1.png)
 
-   - [ ] Open Windows Terminal settings.json as seen above. Default editor will open the file.
-
+   - [ ] Open Windows Terminal settings.json as seen above. Default editor will open the file. In the editor find the `"defaults":` section and modify with the content below:
+   
      ```json
          {
            "defaults": {
@@ -349,7 +351,7 @@ Add-AppxPackage .\Ubuntu2004.appx
                      "name": "Ubuntu-20.04 Zsh",
                      "tabTitle": "Zsh",
                      "icon": "%USERPROFILE%\\Pictures\\ubuntu1.png",
-                     // you may delete this line if you like penguin icon 🐧
+                     // you may delete above line if you like penguin icon 🐧
                      "commandline" : "wsl --distribution Ubuntu-20.04 zsh"
                  },
                  {
@@ -357,7 +359,7 @@ Add-AppxPackage .\Ubuntu2004.appx
                      "hidden": false,
                      "name": "Ubuntu-20.04",
                      "icon": "%USERPROFILE%\\Pictures\\ubuntu.png",
-                     // you may delete this line if you like penguin icon 🐧           
+                     // you may delete above line if you like penguin icon 🐧           
                      "source": "Windows.Terminal.Wsl"
                  },
                  {
@@ -382,19 +384,19 @@ Add-AppxPackage .\Ubuntu2004.appx
                      "source": "Windows.Terminal.Azure"
                  }
              ]
-         },
+      },
      ```
 
    - [ ] And also we need to modify default profile line addressing whichever we want:
-
+   
      ```json
       "defaultProfile": "{12396def-8d0e-4ab1-a9cf-3d842633ca92}",
       // please note that this is git zsh entry's guid number we set in the settings.json file above.
-      // if you modified the guid number, make sure to set the same value here as well
+   // if you modified the guid number, make sure to set the same value here as well
      ```
 
-     Save the settings.json file, if there are syntax any errors, e.g. comma, double quote, parenthesis,  windows terminal will warn you about this. If no errors then windows terminal will refresh itself with the settings we did. You can change this options any time by editing settings file.
-
+     Save the settings.json file, if there are syntax any errors, e.g. comma, double quote, parenthesis,  windows terminal will warn you about this. If no errors then windows terminal will refresh itself with the settings we just did. You can change this options any time by editing settings file.
+   
      > *Note: To see what are the default options for windows terminal, just hold* `Alt` *key while clicking setting on windows terminal window. Yo may take a look at all default values for the terminal.* 
 
 *You can download ubuntu icon file here: [Ubuntu Circle of Friends set for web (513 KB)](https://assets.ubuntu.com/v1/9fbc8a44-circle-of-friends-web.zip)*
@@ -457,7 +459,7 @@ Add-AppxPackage .\Ubuntu2004.appx
 - [ ] And run `sudo apt install zsh -y`
 
 
-> *Please note that, in order to run above command, you should have installed WSL Ubuntu and configured Windows Terminal on* [Terminal Emulator Windows 10 Section](#Terminal Emulator).
+*Please note that, in order to run above command, you should have installed WSL Ubuntu and configured Windows Terminal on* [Terminal Emulator Windows 10 Section](#Terminal Emulator).
 
 - [ ] Changing directory colors:
 
@@ -599,7 +601,13 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
   *Powerlevel10k zsh vs bare bash console in windows 7 on cmder at git for windows*
 
-   
+   ![wsl ubuntu zsh bash](./assets/win10_wt_wsl_zsh_bash.png)
+
+  *Powerlevel10k zsh vs bare bash console in windows 10 on WSL Ubuntu-20.04 at windows terminal*
+
+   ![wsl ubuntu zsh bash](./assets/win10_wt_git_zsh_bash.png)
+
+  *Powerlevel10k zsh vs bare bash console in windows 10 on git for windows at windows terminal*
 
 - [ ] My preferred powerlevel10k setup is as follows: ( You can reconfigure any time by `p10k configure`)
 
