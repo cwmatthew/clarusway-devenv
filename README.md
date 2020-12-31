@@ -284,14 +284,16 @@ Installation instructions in this section applies to all operating systems, plea
     ```bash
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
     ```
-    
+
+
     - [ ] Open your git bash terminal and  in the terminal, execute following commands to set your zsh theme to powerlevel10k and activate plugins just installed above:
+
 
       ```bash
       sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/g' ~/.zshrc
       sed -i 's/plugins=[(]git[)]/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
   ```
-    
+
       or you may run `nano ~/.zshrc` in the terminal, find the line below and manually replace it with the second line(if you ran the two lines above, it is already done 😉):
     
       ```bash
@@ -309,11 +311,13 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
       ```bash
       plugins=(git)
       ```
-    
+
+
       ```bash
       plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
       ```
-    
+
+
       <img src="./assets/plugins.png" alt="plugins" style="zoom:67%;" />
     
       Save and exit nano editor with `CTRL+X` and confirm changes.
@@ -331,7 +335,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
       - Prompt Style :point_right: (1) Lean
       - Character Set :point_right: (1) Unicode
       - Prompt Colors :point_right: (1) 256 colors
-        - Show current time? :point_right: (1) No.
+      - Show current time? :point_right: (1) No.
       - Prompt Height :point_right: (2) Two lines.
       - Prompt Connection:point_right: (1) Disconnected
       - Prompt Frame:point_right: (1) No frame.
@@ -384,11 +388,14 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
         Restart-Computer
         ```
 
+
       - [ ] Set WSL 2 as your default version
+
 
         ```powershell
         wsl --set-default-version 2
         ```
+
 
       - [ ] Install WSL Ubuntu from the Windows Store. ([Ubuntu-20.04](https://aka.ms/wslubuntu2004))
 
@@ -402,15 +409,19 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
         Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile Ubuntu2004.appx -UseBasicParsing
         ```
 
+
         ```bash
         curl -L -o Ubuntu-2004.appx https://aka.ms/wslubuntu2004
         ```
 
+
         to install manually downloaded appx package:
+
 
         ```powershell
         Add-AppxPackage .\Ubuntu2004.appx
         ```
+
 
       - [ ] Launch `Ubuntu2004.exe` and do initial user name, and password stuff: (you will need this password when you need root access on WSL Ubuntu)
 
@@ -421,9 +432,11 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
       - [ ] Update WSL Ubuntu repository database and pre-installed applications by typing following command on Ubuntu console:
 
+
         ```bash
         sudo apt update && sudo apt upgrade && sudo apt autoremove -y
         ```
+
 
     - [ ] Changing directory colors:
 
