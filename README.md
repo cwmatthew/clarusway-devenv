@@ -223,17 +223,17 @@ Let's define our roadmap of our development environment for those operating syst
         Restart-Computer
         ```
 
-  - [ ] Set WSL 2 as your default version
+    - [ ] Set WSL 2 as your default version
 
-    ```powershell
-    wsl --set-default-version 2
-    ```
+          ```powershell
+      wsl --set-default-version 2
+          ```
 
   - [ ] Install WSL Ubuntu from the Windows Store. ([Ubuntu-20.04](https://aka.ms/wslubuntu2004))
 
-    <img src="D:\projects\_cw\clarusway-devenv\assets\ubuntu_ws.png" alt="ubuntu_ws" style="zoom:50%;" />
+    <img src="./assets/ubuntu_ws.png" alt="ubuntu_ws" style="zoom:50%;" />
 
-    <img src="D:\projects\_cw\clarusway-devenv\assets\ubuntu_ws2.png" alt="ubuntu_ws2" style="zoom: 50%;" />
+    <img src="./assets/ubuntu_ws2.png" alt="ubuntu_ws2" style="zoom: 50%;" />
 
   - [ ] or download via powershell or curl:
 
@@ -247,26 +247,22 @@ Let's define our roadmap of our development environment for those operating syst
 
 ​    to install manually downloaded appx package:
 
-    ```powershell
-    Add-AppxPackage .\Ubuntu2004.appx
-    ```
+```powershell
+Add-AppxPackage .\Ubuntu2004.appx
+```
 
-  - [ ] Launch `Ubuntu2004.exe` and do initial user name, and password stuff: (you will need this password when you need root access on WSL Ubuntu)
+
+
+  - [ ] Launch `Ubuntu2004.exe` and do initial user name, and password stuff: (you will need this password when you need root access on WSL Ubuntu) (note: password entry is not visible but it accepts while you are typing.)
 
     ![Initial Setup](https://docs.microsoft.com/en-us/windows/wsl/media/ubuntuinstall.png)
 
-    Right click on the title bar, select Defaults:
-    Under the Options tab, select `Use Ctrl+Shift+C/V as Copy/Paste`
-
-  - [ ] 
-
-- [ ] - [ ] ```
     
-    ```
 
-    - [ ] Save file and close nano and restart Ubuntu-20.04
 
-  - [ ] Please follow [Shell Setup](#shell-setup) above in order to have zsh and oh-my-zsh and powerlevel10k theme triology on WSL Ubuntu as well.
+- [ ] Save file and close nano and restart Ubuntu-20.04
+
+- [ ] Please follow [Shell Setup](#shell-setup) in order to have zsh and oh-my-zsh and powerlevel10k theme triology on WSL Ubuntu as well.
 
  - **Windows Terminal**
 
@@ -284,15 +280,15 @@ Let's define our roadmap of our development environment for those operating syst
 
      <img src="./assets/win_term_ws2.png" alt="win_term_ws2" style="zoom:50%;" />
 
-   Windows Terminal is configured for the build-in cmd.exe, powershell.exe and wsl ubuntu automatically. However we still need to change default fonts and some stuff to beautify our terminal, and also we need to add git bash and git zsh entries to windows terminal setting file. Let's do that.
+   Windows Terminal is configured for the build-in cmd.exe, powershell.exe and wsl ubuntu automatically. However we still need to change default fonts and some stuff to beautify our terminal, and also we need to add git bash and git zsh entries to windows terminal settings file. Let's do that.
 
-   - [ ] For your convenience, prior to setting up windows terminal, it is advised to install visual studio code, since you can use vscode to edit configuration easily, vscode will autocomplete while you are typing some values for windows terminal. See [Other tools](#Other tools) for details.
+   - [ ] For your convenience, prior to setting up windows terminal, it is advised to install visual studio code, since you can use vscode to edit configuration easily, vscode will autocomplete while you are typing some values for windows terminal. See [Other tools](#Other tools) for installation details.
 
    - [ ] Open windows terminal app.
 
      ![image-20201230152636302](./assets/win_term1.png)
 
-   - [ ] Open Windows Terminal setting.json as seen above. Default editor will open setting.json file.
+   - [ ] Open Windows Terminal settings.json as seen above. Default editor will open the file.
 
      ```json
          {
@@ -316,7 +312,7 @@ Let's define our roadmap of our development environment for those operating syst
              [
                 {
                      "guid": "{12396def-8d0e-4ab1-a9cf-3d842633ca92}",
-                    // this is a random hexadecimal number group feel free to change whatever you want
+                    // this is a random hexadecimal guid number feel free to change whatever you want, keep the length same
                     // please note that this numbers should be unique to each entry on windows terminal list here
                     // and we will use this guid to address default shell at windows terminal start
                      "closeOnExit" : true,
@@ -341,7 +337,7 @@ Let's define our roadmap of our development environment for those operating syst
                      "hidden": false,
                      "name": "Ubuntu-20.04 Zsh",
                      "tabTitle": "Zsh",
-                     "icon": "%USERPROFILE%\\Pictures\\ubuntu.png",
+                     "icon": "%USERPROFILE%\\Pictures\\ubuntu1.png",
                      // you may delete this line if you like penguin icon 🐧
                      "commandline" : "wsl --distribution Ubuntu-20.04 zsh"
                  },
@@ -349,8 +345,8 @@ Let's define our roadmap of our development environment for those operating syst
                      "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
                      "hidden": false,
                      "name": "Ubuntu-20.04",
-                     "icon": "%USERPROFILE%\\Pictures\\ubuntu1.png",
-                     // you may delete this line if you like penguin icon 🐧                
+                     "icon": "%USERPROFILE%\\Pictures\\ubuntu.png",
+                     // you may delete this line if you like penguin icon 🐧           
                      "source": "Windows.Terminal.Wsl"
                  },
                  {
@@ -383,7 +379,7 @@ Let's define our roadmap of our development environment for those operating syst
      ```json
       "defaultProfile": "{12396def-8d0e-4ab1-a9cf-3d842633ca92}",
       // please note that this is git zsh entry's guid number we set in the settings.json file above.
-      // if you modified the number, make sure to set the same value here as well
+      // if you modified the guid number, make sure to set the same value here as well
      ```
 
      Save the settings.json file, if there are syntax any errors, e.g. comma, double quote, parenthesis,  windows terminal will warn you about this. If no errors then windows terminal will refresh itself with the settings we did. You can change this options any time by editing settings file.
@@ -447,9 +443,11 @@ Let's define our roadmap of our development environment for those operating syst
 
   - [ ] Update WSL Ubuntu repository database and pre-installed applications by typing following command on Ubuntu console:
 
-        ```bash
-        sudo apt update && sudo apt upgrade && sudo apt autoremove -y
-        ```
+    ```bash
+    sudo apt update && sudo apt upgrade && sudo apt autoremove -y
+    ```
+
+    
 
 - [ ] Changing directory colors:
 
