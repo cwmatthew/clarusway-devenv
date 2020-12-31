@@ -279,10 +279,12 @@ Installation instructions in this section applies to all operating systems, plea
 
     <img src="./assets/powerlevel10k.png" alt="powerlevel10k" style="zoom:67%;" />
     
+
+
     - [ ] Run following command on bash/zsh shell terminal windows on your computer:
 
     ```bash
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
     ```
 
 
@@ -292,17 +294,17 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
       ```bash
       sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/g' ~/.zshrc
       sed -i 's/plugins=[(]git[)]/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
-  ```
+      ```
 
       or you may run `nano ~/.zshrc` in the terminal, find the line below and manually replace it with the second line(if you ran the two lines above, it is already done 😉):
     
       ```bash
       ZSH_THEME="robbyrussell"
-  ```
-    
+      ```
+
       ```bash
       ZSH_THEME="powerlevel10k/powerlevel10k"
-  ```
+      ```
     
       <img src="./assets/zshtheme.png" alt="zsh theme setting" style="zoom:67%;" />
     
@@ -327,9 +329,8 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
       ![Zsh vs Bash in Windows 7](./assets/win7_cmder_zsh_bash.png)
     
       *Powerlevel10k zsh vs bare bash console in windows 7 on cmder at git for windows*
-    
-      
-    
+ 
+   
     - [ ] My preferred powerlevel10k setup is as follows: ( You can reconfigure any time by `p10k configure`)
     
       - Prompt Style :point_right: (1) Lean
@@ -398,13 +399,13 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
 
       - [ ] Install WSL Ubuntu from the Windows Store. ([Ubuntu-20.04](https://aka.ms/wslubuntu2004))
-
+    
         <img src="D:\projects\_cw\clarusway-devenv\assets\ubuntu_ws.png" alt="ubuntu_ws" style="zoom:50%;" />
-
+    
         <img src="D:\projects\_cw\clarusway-devenv\assets\ubuntu_ws2.png" alt="ubuntu_ws2" style="zoom: 50%;" />
-
+    
       - [ ] or download via powershell or curl:
-
+    
         ```powershell
         Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile Ubuntu2004.appx -UseBasicParsing
         ```
@@ -424,12 +425,12 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
 
       - [ ] Launch `Ubuntu2004.exe` and do initial user name, and password stuff: (you will need this password when you need root access on WSL Ubuntu)
-
+    
         ![Initial Setup](https://docs.microsoft.com/en-us/windows/wsl/media/ubuntuinstall.png)
-
+    
         Right click on the title bar, select Defaults:
         Under the Options tab, select `Use Ctrl+Shift+C/V as Copy/Paste`
-
+    
       - [ ] Update WSL Ubuntu repository database and pre-installed applications by typing following command on Ubuntu console:
 
 
@@ -439,37 +440,37 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
 
     - [ ] Changing directory colors:
-
+    
       *Please check ls output colors in ntfs partitions, e.g. your user profile directory on windows, you may see some file's colors as inverted when you run* `ls` *command. The default colors used in* `ls`, *we have some bad background highlighting issues, let's fix that. Open Ubuntu-20.04 app* 
-
+    
       - [ ] Create a `.dircolors` file as follows: `dircolors -p > ~/.dircolors`
-
+    
         You now have a .dircolors file containing the color configuration for `ls`, which is stored in the env variable LS_COLORS. What we need to do next is make a change to the colors, and save it back to LS_COLORS.
-
+    
       - [ ] Run`nano ~/.dircolors` , and modify with the settings below. We're removing the background from OTHER_WRITABLE, and fixing the font color for the rest:
-
+    
         Change `SETUID` to: `SETUID 00;30;41`
-
+    
         Change `SETGID` to: `SETUID 00;30;43`
-
+    
         Change `CAPABILITY` to: `CAPABILITY 00;30;41`
-
+    
         Change `STICKY_OTHER_WRITABLE` to: `STICKY_OTHER_WRITABLE 00;30;42`
-
+    
         Change `OTHER_WRITABLE` to: `OTHER_WRITABLE 01;32`
-
+    
         Change `STICKY` to: `STICKY 00;30;44`
-
+    
         Save and exit `CTRL+X`and confirm changes.       
-
+    
         - [ ] Edit `nano ~/.zshrc` and add the following line:  *please note to the back ticks* (`) *not single quote*(')
-
+    
         ```bash
         eval `dircolors ~/.dircolors`
         ```
-
+    
         - [ ] Save file and close nano and restart Ubuntu-20.04
-
+    
       - [ ] Please follow [Shell Setup](#shell-setup) above in order to have zsh and oh-my-zsh and powerlevel10k theme triology on WSL Ubuntu as well.
 
  - **Windows Terminal**
