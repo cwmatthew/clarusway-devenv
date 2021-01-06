@@ -442,6 +442,10 @@ See [Other tools](#other-tools) for installation details.
   > You may want to copy either these  symbols: ⚡, 👑 or whatever you like.
   
   ![cmdermini_setup](./assets/cmdermini_setup.gif)
+  
+- You can set for each profile in cmdermini tasks section the startup directory to any directory you want, eg home directory.
+
+- To continue setting zsh up, you may jump to [Install oh-my-zsh section](#--install-oh-my-zsh)
 
 ### macOS
 
