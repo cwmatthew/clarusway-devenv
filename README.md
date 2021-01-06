@@ -212,7 +212,7 @@ Let's define our roadmap of our development environment for those operating syst
     
     - [ ] [FiraCode NF Medium.ttf](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Medium/complete/Fira%20Code%20Medium%20Nerd%20Font%20Complete%20Windows%20Compatible.ttf)
     
-      > *Windows users can install via `choco install firacodenf -y` as well.*
+      > *Windows users can install via* `choco install firacodenf -y` *as well.*
 
 ## Terminal Emulator
 
@@ -435,11 +435,13 @@ See [Other tools](#other-tools) for installation details.
   
 - Configure Cmder Mini
 
-  This part is very complex due to cmder setting panel, we will try to simplify as much as we can.
+  This part is very complex due to cmder setting panel, we will try to simplify as much as we can. Here below an animated gif for cmder mini initial setup. For advanced setup, you may take a look every item in settings window.
 
   Cmder mini should be installed in `C:\tools\cmdermini`folder. If you installed in a different location change relevant setting accordingly.
 
+  > You may want to copy either these  symbols: ⚡, 👑 or whatever you like.
   
+  ![cmdermini_setup](./assets/cmdermini_setup.gif)
 
 ### macOS
 
@@ -467,7 +469,7 @@ See [Other tools](#other-tools) for installation details.
 
   - [ ] Open `git-bash.exe` with **elevated rights** (click start and type `git bash` then click the application with `ctrl+shift` pressed) and run`pacman -S zsh --noconfirm --overwrite='*'`.
 
-*Please note that, in order to run above command, you should have* configured git for windows](#configure-git-for-windows).
+*Please note that, in order to run above command, you should have* [configured git for windows](#configure-git-for-windows).
 
 - [ ] Open Windows Terminal from start menu, and select Ubuntu 20.04 from the list at the tab bar of the application, update WSL Ubuntu repository database and pre-installed applications by typing following command on Ubuntu console:
 
