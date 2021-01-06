@@ -80,9 +80,7 @@ Let's define our roadmap of our development environment for those operating syst
   choco install git -y
   ```
 
-  or you can install from https://gitforwindows.org/
-
-In order to enhance terminal experience, we need to [Configure git for windows](#Configure Git for Windows) by integrating some msys2 packages.
+  or you can install from https://gitforwindows.org/ In order to enhance terminal experience, we need to [Configure git for windows](#configure-git-for-windows) by integrating some msys2 packages.
 
 
   <img src="./assets/gitwindowsweb.png" alt="gitforwindows" style="zoom:67%;" />
@@ -306,7 +304,7 @@ Add-AppxPackage .\Ubuntu2004.appx
 
    - [ ] For your convenience, prior to setting up windows terminal, it is advised to install visual studio code, since you can use vscode to edit configuration easily, vscode will autocomplete while you are typing some values for windows terminal. 
 
-See [Other tools](#Other tools) for installation details.
+See [Other tools](#other-tools) for installation details.
 
    - [ ] Open windows terminal app.
 
@@ -469,7 +467,7 @@ See [Other tools](#Other tools) for installation details.
 
   - [ ] Open `git-bash.exe` with **elevated rights** (click start and type `git bash` then click the application with `ctrl+shift` pressed) and run`pacman -S zsh --noconfirm --overwrite='*'`.
 
-*Please note that, in order to run above command, you should have* [configured git for windows](#Configure Git for Windows).
+*Please note that, in order to run above command, you should have* configured git for windows](#configure-git-for-windows).
 
 - [ ] Open Windows Terminal from start menu, and select Ubuntu 20.04 from the list at the tab bar of the application, update WSL Ubuntu repository database and pre-installed applications by typing following command on Ubuntu console:
 
@@ -479,8 +477,7 @@ See [Other tools](#Other tools) for installation details.
 
 - [ ] And run `sudo apt install zsh -y`
 
-*Please note that, in order to run above command, you should have installed WSL Ubuntu and configured Windows Terminal on* 
-[Terminal Emulator Windows 10 Section](#Terminal Emulator).
+*Please note that, in order to run above command, you should have installed WSL Ubuntu and configured Windows Terminal on* [Terminal Emulator Windows 10 Section](#terminal-emulator).
 
 - [ ] Changing directory colors:
 
@@ -525,7 +522,7 @@ See [Other tools](#Other tools) for installation details.
   - [ ] Open `git-bash.exe` with **elevated rights** (click start and type `git bash` then click the application with `ctrl+shift` and run`pacman -S zsh --noconfirm --overwrite='*'` 
 
     > *Please note that, in order to run above command, you should have* 
-    > [configured git for windows](#Configure Git for Windows).
+    > [configured git for windows](#configure-git-for-windows).
   
 - **macOS**
 
