@@ -82,7 +82,8 @@ Let's define our roadmap of our development environment for those operating syst
 
   or you can install from https://gitforwindows.org/
 
-- [ ] In order to enhance terminal experience, we need to [Configure git for windows](#Configure Git for Windows) by integrating some msys2 packages.
+In order to enhance terminal experience, we need to [Configure git for windows](#Configure Git for Windows) by integrating some msys2 packages.
+
 
   <img src="./assets/gitwindowsweb.png" alt="gitforwindows" style="zoom:67%;" />
 
@@ -96,11 +97,20 @@ Let's define our roadmap of our development environment for those operating syst
 
 ### - Setting up .gitconfig file
 
-- This setup is platform independent, you can either execute commands below or copy [.gitconfig](.gitconfig) file to your home directory and change relevant lines with your identity using a text editor.
+- This setup is platform independent, you can either execute commands below or copy [.gitconfig](.gitconfig?raw=true) file to your home directory and change relevant lines with your identity using a text editor.
 
   ```bash
   git config --global user.name "Your Name"
   git config --global user.email "youremail@example.com"
+  git config --global core.autocrlf input
+  git config --global core.eol lf
+  git config --global core.pager less -FRSX
+  git config --global init.defaultbranch main
+  git config --global color.branch auto
+  git config --global color.diff auto
+  git config --global color.interactive auto
+  git config --global color.status auto
+  git config --global color.ui auto
   ```
   
 
@@ -147,6 +157,7 @@ Let's define our roadmap of our development environment for those operating syst
 
 *source: https://github.com/Alexpux/MSYS2-pacman/issues/50#issuecomment-602141995*
     
+
 - [ ] Test if pacman is working:
   
   ```bash
@@ -295,7 +306,7 @@ Add-AppxPackage .\Ubuntu2004.appx
 
    - [ ] For your convenience, prior to setting up windows terminal, it is advised to install visual studio code, since you can use vscode to edit configuration easily, vscode will autocomplete while you are typing some values for windows terminal. 
 
-     See [Other tools](#Other tools) for installation details.
+See [Other tools](#Other tools) for installation details.
 
    - [ ] Open windows terminal app.
 
@@ -392,7 +403,7 @@ Add-AppxPackage .\Ubuntu2004.appx
      ```json
       "defaultProfile": "{12396def-8d0e-4ab1-a9cf-3d842633ca92}",
       // please note that this is git zsh entry's guid number we set in the settings.json file above.
-   // if you modified the guid number, make sure to set the same value here as well
+      // if you modified the guid number, make sure to set the same value here as well
      ```
 
      Save the settings.json file, if there are syntax any errors, e.g. comma, double quote, parenthesis,  windows terminal will warn you about this. If no errors then windows terminal will refresh itself with the settings we just did. You can change this options any time by editing settings file.
@@ -423,6 +434,14 @@ Add-AppxPackage .\Ubuntu2004.appx
     or download cmder mini from cmder web site: https://cmder.net/
 
     <img src="./assets/cmder_mini.png" alt="cmder mini" style="zoom: 80%;" />
+  
+- Configure Cmder Mini
+
+  This part is very complex due to cmder setting panel, we will try to simplify as much as we can.
+
+  Cmder mini should be installed in `C:\tools\cmdermini`folder. If you installed in a different location change relevant setting accordingly.
+
+  
 
 ### macOS
 
@@ -435,6 +454,8 @@ Add-AppxPackage .\Ubuntu2004.appx
     <img src="./assets/iterm2.png" alt="iterm2" style="zoom: 50%;" />
 
   > *macOS comes with stock "Terminal.app", but it is recommended to install iterm2.*
+  
+  On preferences change terminal font to "MesloLGS NF", it is done.
 
 ### Linux
 
@@ -448,8 +469,8 @@ Add-AppxPackage .\Ubuntu2004.appx
 
   - [ ] Open `git-bash.exe` with **elevated rights** (click start and type `git bash` then click the application with `ctrl+shift` pressed) and run`pacman -S zsh --noconfirm --overwrite='*'`.
 
-    > *Please note that, in order to run above command, you should have* [configured git for windows](#Configure Git for Windows).
-  
+*Please note that, in order to run above command, you should have* [configured git for windows](#Configure Git for Windows).
+
 - [ ] Open Windows Terminal from start menu, and select Ubuntu 20.04 from the list at the tab bar of the application, update WSL Ubuntu repository database and pre-installed applications by typing following command on Ubuntu console:
 
   ```bash
@@ -458,8 +479,8 @@ Add-AppxPackage .\Ubuntu2004.appx
 
 - [ ] And run `sudo apt install zsh -y`
 
-
-*Please note that, in order to run above command, you should have installed WSL Ubuntu and configured Windows Terminal on* [Terminal Emulator Windows 10 Section](#Terminal Emulator).
+*Please note that, in order to run above command, you should have installed WSL Ubuntu and configured Windows Terminal on* 
+[Terminal Emulator Windows 10 Section](#Terminal Emulator).
 
 - [ ] Changing directory colors:
 
@@ -503,7 +524,8 @@ Add-AppxPackage .\Ubuntu2004.appx
 
   - [ ] Open `git-bash.exe` with **elevated rights** (click start and type `git bash` then click the application with `ctrl+shift` and run`pacman -S zsh --noconfirm --overwrite='*'` 
 
-    > *Please note that, in order to run above command, you should have* [configured git for windows](#Configure Git for Windows).
+    > *Please note that, in order to run above command, you should have* 
+    > [configured git for windows](#Configure Git for Windows).
   
 - **macOS**
 
@@ -529,7 +551,7 @@ Installation instructions in this section applies to all operating systems, plea
 
 <img src="./assets/ohmzsh.png" alt="oh-my-zsh" style="zoom: 67%;" />
 
-*The install might have asked you to make* `zsh` *as your Login Shell. Due to implementation of shell on Git Bash, it is recommended to keep default shell as* `bash` *for git bash only. We will turn around this issue later on.*
+*The install might have asked you to make* `zsh` *as your Login Shell. Due to implementation of shell on Git Bash, chsh command is not available *on git for windows bash. We will turn around this issue later on.*
 
 *Except Git Bash, feel free to change your login shell for zsh when asked, or via running command:* `chsh -s $(which zsh)`  *This setting is user specific, no need to prefix* `sudo`
 
@@ -545,7 +567,7 @@ Installation instructions in this section applies to all operating systems, plea
 
     - [ ] Run following command to download zsh-syntax-highlighting:
 
-      *This plugin will highlight correctly typed commands as green, wrong ones as red instantly while you type in zsh terminal*
+      *This plugin will highlight correctly typed commands with green, wrong ones with red instantly as you type in zsh terminal*
       
       ```bash
       git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
