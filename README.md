@@ -1,603 +1,627 @@
+# Clarusway of Development Environment
 
+![img](https://cdn-images-1.medium.com/max/800/0*LwNhp-5bExZXCNA3)Photo by [Charles Deluvio](https://unsplash.com/@charlesdeluvio?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)
 
-#  Clarusway of Development Environment
+Whichever language or technology you are using, it doesn’t matter; somehow, you will eventually meet with the terminal window's black screen. But this time, you are luckier than before since many tools will make your journey more productive on those terminals. In this article, we’ll cover most of the major operating systems, including Windows 10, 8, and 7 from Microsoft, macOS from Apple, and Ubuntu variant of Linux.
 
-Whichever language or technology you are using it doesn't matter, somehow you will eventually meet with the black screen of terminal window. But this time, you are luckier than before, since there are many tools those will make your journey on that terminals. In this article we'll cover all major operating systems, including Windows 10, 8 and 7 from Microsoft, macOS from Apple, and Ubuntu variant of Linux.
+<img src="https://cdn-images-1.medium.com/max/800/0*hUYFdQTIdFk_LtRT" alt="img" style="zoom: 50%;" />
 
-Zsh is very customizable shell in unix platforms, Thanks to msys2 implementation on git for windows, and linux virtualization on windows sub-system for linux, in short WSL. You can have pleasure of this shell on windows platform too. Windows 10 has a shiny windows terminal application. Windows 8 and 7 users don't worry, there is an almost similar alternative to windows terminal app for you. It is cmder. We will install this terminal client for windows 7, 8.1 systems.
+Photo by [Mark König](https://unsplash.com/@markkoenig?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)
 
-Developers use range variety of tools for daily work, but for sure git has the top priority. While working on projects, you probably writing code for a ticket in a branch. Sometimes it becomes difficult to keep track of the branch and commit status. From now on you can easily see your current branch and status from your prompt with the help of zsh, and its companion extension oh-my-zsh and also shining powerlevel10k theme. In addition to this trilogy, syntax highlighting and auto suggestion plugins on terminal will boost your productivity.
+Let’s define the roadmap of our development environment for those operating systems. 
 
-Users need to install, remove, upgrade, configure and manage software packages. This is a time consuming job. Linux distributions have package managers long time ago. Package managers help the user to install correct compatible version of desired software with its dependencies as well. You don't have to consider about downloading and installing of third party software, to run the application flawlessly.
+- First of all, we will install package managers on each OS, and then we will continue by installing git on our systems and make an initial setup for using git. 
+- We will then configure Git for Windows program in the Windows OS to use this program as our shell infrastructure. Non-windows users can skip this section since their OSes have built-in support for **Unix/Linux** shells.
+- We will continue to install recommended fonts to our systems.
+- And then, we will install/configure a terminal emulator in which we interact with command shells.
+- In the end, we will configure our command shell. 
+- Beyond this section, there are “other tools” section recommended for increasing your productivity on the computer. Some parts of this journey may share common steps, and please follow each step one by one.
 
-Linux distributions usually have their own custom package manager, such as apt and apt-get for Ubuntu/Debian, yum and dnf  for Fedora/Redhat and zypper for OpenSUSE etc. On the macOS side there is a third party community tool called homebrew in short brew. For Windows family, there is also community/proprietary tool named chocolatey and scoop. For Windows package management we will choose chocolatey.
+Let’s hands-on!
 
-Let's define our roadmap of our development environment for those operating systems. First of all we will install package managers on each OS, and then we will continue to enhance terminal experience with terminal applications, fonts and shells. Some part of this journey may share common steps, please follow each step one by one.
+### Package Manager
 
+<img src="https://cdn-images-1.medium.com/max/800/0*fuPJw4FvEIuoulCC" alt="img" style="zoom:50%;" />
 
+Photo by [Toby Stodart](https://unsplash.com/@tobystodart?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)
 
-## Package Manager
+Users need to install, remove, upgrade, configure, and manage software packages. This is a time-consuming job. Linux distributions had package managers a long time ago. Package managers help the user install a correct compatible version of the desired software with its dependencies. You don’t have to consider downloading and installing third-party software to run the application flawlessly. Linux distributions usually have their own custom package managers, such as apt and apt-get for Ubuntu/Debian, yum and DNF for Fedora/Redhat and zypper for OpenSUSE, etc. On the macOS side, there is a third party community tool called homebrew in shorthand brew. For Windows family, there is also a community/proprietary tool named chocolatey and scoop. For Windows package management, we will choose Chocolatey.
 
 ### - Windows 10 and 8.1
 
-- Install Chocolatey
-  - [ ] Open `powershell.exe` with **[elevated rights](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)** (click start and type `powershell.exe` then click the application with `ctrl+shift` pressed)
+Install Chocolatey
 
-  - [ ] Now run the following command:
+![img](https://cdn-images-1.medium.com/max/800/1*EB2OkFAyO7J_8Mx2RML79Q.png)[Chocolatey.org](https://chocolatey.org/) official page screenshot
 
-    ```powershell
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-    ```
+- Open `powershell.exe` with [**elevated rights**](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/) (click start and type `powershell.exe` then click the application with `ctrl+shift` pressed)
+- Now run the following command:
 
-  *source: [Chocolatey.org](https://chocolatey.org/install#individual)*
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+```
+
+*source:* [*Chocolatey.org*](https://chocolatey.org/install#individual)
 
 ### - Windows 7
 
-- Install Chocolatey manually
+Install Chocolatey manually
 
-  *Chocolatey.org now requires TLS 1.2 at a minimum. In Windows 7, we need to turn around this issue, therefore we will install Chocolatey manually.*
+- *Chocolatey.org now requires TLS 1.2 at a minimum. In Windows 7, we need to turn around this issue. Therefore we will install Chocolatey manually.*
+- The first step offline is to obtain a copy of the Chocolatey Nupkg (nupkg files are just fancy zip files). Download [the latest version directly](https://chocolatey.org/api/v2/package/chocolatey).
+- Unzip it using any application that supports `zip` format. You can rename the downloaded file, e.g.: `chocolatey.0.10.15.nupkg` --> `chocolatey.0.10.15.zip` and extract the file using the windows explorer context menu.
+- Open `powershell.exe` with **elevated rights** and navigate into the unzipped package's tools folder.
 
-  - [ ] The first step with offline is to obtain a copy of the Chocolatey Nupkg (nupkg files are just fancy zip files). Download [the latest version directly](https://chocolatey.org/api/v2/package/chocolatey).
+```powershell
+PS C:\...\chocolatey.0.10.15\tools> .\chocolateyInstall.ps1
+```
 
-  - [ ] Unzip it using any application that supports `zip` format. You can just rename downloaded file e.g: `chocolatey.0.10.15.nupkg` --> `chocolatey.0.10.15.zip` and extract the file using windows explorer context menu.
+*Note*: This will not set Chocolatey as an installed package, so it may be a good idea also to call `choco upgrade chocolatey -y` and let it reinstall the same version, but at least it will be available for upgrades then.
 
-  - [ ] Open `powershell.exe` with **elevated rights** (click start and type `powershell.exe` then click the application with `ctrl+shift` pressed) and navigate into the unzipped package's tools folder.
-
-    ```powershell
-    PS C:\...\chocolatey.0.10.15\tools> .\chocolateyInstall.ps1
-    ```
-
-    > *Note*: This will not set Chocolatey as an installed package, so it may be a good idea to also call `choco upgrade chocolatey -y` and let it reinstall the same version, but at least it will be available for upgrades then.
-
-  *source: [Chocolatey.org](https://docs.chocolatey.org/en-us/choco/setup#completely-offline-install)*
-  
-  ![chocotlatey](./assets/chocolatey.png)
+*source:* [*Chocolatey.org*](https://docs.chocolatey.org/en-us/choco/setup#completely-offline-install)
 
 ### - macOS
 
-- Install homebrew
+Install homebrew
 
-  ```bash
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  ```
-  
-  ![homebrew](./assets/homebrew.png)
+![img](https://cdn-images-1.medium.com/max/800/1*pflGzfWjm62M6DbLAhRmMw.png)[Homebrew](https://brew.sh/) official page screenshot
 
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 
 ### - Linux
 
-- Ubuntu users may continue with snap or apt. Snap repositories seem updated frequently than Ubuntu official repo. It is up to you.
+- Ubuntu users may continue with Snap or Apt. Snap repositories seem updated frequently than Ubuntu's official repo. It is up to you.
 
-  
+![img](https://cdn-images-1.medium.com/max/800/1*aP77wtSLlmKF5dlAe_HvRA.png)[Snap](https://snapcraft.io/) official page screenshot
 
-## Git
+Till now, we’ve covered package managers for major operating systems.
 
-### - Windows 10, 8.1 and Windows 7
+In the next article, we will install git on our computers.
 
-- [ ] Open `powershell.exe` or `cmd.exe` with **elevated rights** (click start and type `powershell.exe` or `cmd.exe` then click the application with `ctrl+shift` pressed), and run
+### Git
 
-  ```powershell
-  choco install git -y
-  ```
+![img](https://cdn-images-1.medium.com/max/800/1*IAry2ijWOOTMwdU3-PWUzQ.png)[Git](https://git-scm.com/) official page screenshot
 
-  or you can install from https://gitforwindows.org/ In order to enhance terminal experience, we need to [Configure git for windows](#configure-git-for-windows) by integrating some msys2 packages.
+Developers use various tools for daily work, but for sure, git has the top priority. While working on projects, you are probably writing code for a ticket in a branch. Sometimes it becomes difficult to keep track of the branch and commit status. At the end of this article, you will see git status from the command prompt line on your terminal.
 
+### - Windows 10, 8.1, and Windows 7
 
-  <img src="./assets/gitwindowsweb.png" alt="gitforwindows" style="zoom:67%;" />
+- Open `powershell.exe` or `cmd.exe` with **elevated rights**, and run
+
+```bash
+choco install git -y
+```
+
+- or you can install it from https://gitforwindows.org/. To enhance the terminal experience, we need to [Configure git for windows](https://github.com/cwmatthew/clarusway-devenv#configure-git-for-windows) by integrating some msys2 packages.
 
 ### - macOS
 
-- [ ] `brew install git`
+- `brew install git`
 
 ### - Linux
 
-- [ ]  `sudo apt install git -y`  
+- `sudo apt install git -y`
 
 ### - Setting up .gitconfig file
 
-- This setup is platform independent, you can either execute commands below or copy [.gitconfig](.gitconfig?raw=true) file to your home directory and change relevant lines with your identity using a text editor.
+- This setup is platform-independent. You can either execute commands below or copy the .gitconfig file from the repository at the end of this article to your home directory and change relevant lines with your identity using a text editor.
 
-  ```bash
-  git config --global user.name "Your Name"
-  git config --global user.email "youremail@example.com"
-  git config --global core.autocrlf input
-  git config --global core.eol lf
-  git config --global core.pager less -FRSX
-  git config --global init.defaultbranch main
-  git config --global color.branch auto
-  git config --global color.diff auto
-  git config --global color.interactive auto
-  git config --global color.status auto
-  git config --global color.ui auto
-  ```
-  
+```bash
+git config - global user.name "Your Name" 
+git config - global user.email "youremail@example.com" 
+git config - global core.autocrlf input 
+git config - global core.eol lf 
+git config - global core.pager less -FRSX 
+git config - global init.defaultbranch main 
+git config - global color.branch auto 
+git config - global color.diff auto 
+git config - global color.interactive auto 
+git config - global color.status auto 
+git config - global color.ui auto
+```
 
-## Configure Git for Windows
+### Configure Git for Windows
 
-> *If it is not installed yet, you can install with* `choco install 7zip -y` *on an elevated command prompt/or powershell, or you can download from https://www.7-zip.org/*
+![img](https://cdn-images-1.medium.com/max/800/1*CWRPOQCOgpZsgzsh9BpDIA.png)
 
-- For 64 bit Windows Systems (x86_64) **[How to check](https://www.howtogeek.com/howto/21726/how-do-i-know-if-im-running-32-bit-or-64-bit-windows-answers/)**
+[Git for Windows](https://gitforwindows.org/) official page screenshot
 
-  - Download files below: 
-    - [ ] pacman, https://repo.msys2.org/msys/x86_64/pacman-5.2.2-4-x86_64.pkg.tar.xz
-    - [ ] keyring,https://repo.msys2.org/msys/x86_64/msys2-keyring-1~20201002-1-any.pkg.tar.xz
-    - [ ] repository mirror list, [pacman mirror list files](./mirrorlists.zip?raw=true)
-  
-- For 32 bit Windows Systems(x86):
+*If it is not installed yet, you can install it with* `choco install 7zip -y` *on an elevated command prompt/or PowerShell, or you can download from* [*https://www.7-zip.org/*](https://www.7-zip.org/)
 
-  - Download files below:
-    - [ ] pacman, https://repo.msys2.org/msys/i686/pacman-5.2.2-4-i686.pkg.tar.xz
-    - [ ] keyring,https://repo.msys2.org/msys/x86_64/msys2-keyring-1~20201002-1-any.pkg.tar.xz
-    - [ ] repository mirror list, [pacman mirror list files](./mirrorlists.zip?raw=true)
-  
-- For the both architecture:
+![img](https://cdn-images-1.medium.com/max/800/1*TWQe19p3VmS1E3Dne7ZlXw.png)
 
-  - [ ] Open these file with elevated 7zip, since we are writing into Git folder inside Program Files, and this folder is a system folder. There are one more archieve files within pacman and keyring files. Open inner ones and extract all folders and as well as mirrorlists.zip contents into git for windows directory  (default folder is c:\Program Files\Git\)
+[7zip](https://7-zip.org/) official page screenshot
 
-  - [ ] Open `git-bash.exe` with **elevated rights** (click start and type `git bash` then click the application with `ctrl+shift` pressed):
+For 64 bit Windows Systems (x86_64), [How to check](https://www.howtogeek.com/howto/21726/how-do-i-know-if-im-running-32-bit-or-64-bit-windows-answers/)
 
-    ```bash
-    set "PATH=%programfiles%\Git\usr\bin"
-    bash pacman-key --init
-    bash pacman-key --populate msys2
-    bash pacman-key --refresh-keys
-    pacman -Tv
-    pacman -Syuv --overwrite='*'
-    pacman --version
-    pacman -Sv --noconfirm --overwrite='*' bash 
-    # this install might stuck at infinite loop, if so
-    # close git bash window and reopen it as elevated
-    # run the last command again
-    pacman -Sv --noconfirm --overwrite='*' rsync
-    pacman -Sv --noconfirm --overwrite='*' util-linux 
-    ```
-    
+- Download files below:
+- Pacman, https://repo.msys2.org/msys/x86_64/pacman-5.2.2-4-x86_64.pkg.tar.xz
+- Keyring,https://repo.msys2.org/msys/x86_64/msys2-keyring-1~20201002-1-any.pkg.tar.xz
+- Repository mirror list, [Pacman mirror list files](https://github.com/cwmatthew/clarusway-devenv/blob/main/mirrorlists.zip?raw=true)
 
-*source: https://github.com/Alexpux/MSYS2-pacman/issues/50#issuecomment-602141995*
-    
+For 32 bit Windows Systems(x86):
 
-- [ ] Test if pacman is working:
-  
-  ```bash
-    # tree command is not installed, run tree to check
-    tree 
-    # so let's install
-    pacman -S tree
-    # test tree command as below
-    tree -dL 2
-    pacman -S zsh --overwrite='*' --noconfirm
-    # we are also doing one of major installation at the line above 😉
-  ```
-  
-  > *Note: If you face any errors during installation of any package with pacman rerun the same install command with* `--overwrite='*'` *option*
-  
-- [ ] To configure directory mount points, Open `git-bash.exe` with **elevated rights** (click start and type `git bash` then click the application with `ctrl+shift` pressed) and run `nano /etc/fstab`
-  
-    ```bash
-    # modify the lines below "DO NOT REMOVE NEXT LINE"
-    
-    # DO NOT REMOVE NEXT LINE. It remove cygdrive prefix from path
-    none /mnt cygdrive binary,posix=0,noacl,user 0 0
-    # All drives will be mounted under /mnt eg /mnt/c /mnt/d just like in WSL
-    none /tmp usertemp binary,posix=0,noacl 0 0
-    /mnt/c/Users /home auto bind,binary,posix=0,noacl,user 0 0
-    # binding c:\Users to /home so user homedir will be /home/<user>
-    ```
-    
-  
-  Save and exit nano editor with `CTRL+X` and confirm changes.
-  
-  After restart, open git bash and type `pwd`, your user profile directory should be `/home/<username>`
+- Download files below:
+- Pacman, https://repo.msys2.org/msys/i686/pacman-5.2.2-4-i686.pkg.tar.xz
+- Keyring,https://repo.msys2.org/msys/x86_64/msys2-keyring-1~20201002-1-any.pkg.tar.xz
+- Repository mirror list, [Pacman mirror list files](https://github.com/cwmatthew/clarusway-devenv/blob/main/mirrorlists.zip?raw=true)
 
-## Fonts
+For both architecture:
 
-  - The fonts we are installing here are powerline symbols added fonts. These fonts are also known as NerdFonts. Take a look at: https://www.nerdfonts.com/ . Here below shorthand for downloading our preferred fonts. MesloLGS NF is the recommended font for powerlevel10k theme. FiraCode is the one of most preferred coding editor font. FiraCode supports ligatures, joining of adjacent characters as a single one for readability. Here below are the powerline patched ones. You can also use it for the terminal windows as well, it is up to you.
-    
-  - MesloLGS NF: download these four ttf files below and install your OS:
-    
-    - [ ] [MesloLGS NF Regular.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf)
-    - [ ] [MesloLGS NF Bold.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf)
-    - [ ] [MesloLGS NF Italic.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf)
-    - [ ] [MesloLGS NF Bold Italic.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf)
-    
-      > *Note: if you are macOS user and installed iterm2, powerlevel10k setup*  `p10k configure` *will automatically download MesloLGS NF fonts for you. Simply answer* `Yes` *when p10k asks you to install Meslo Nerd Font.*
-    
-  - FiraCode NF: download these four ttf files below and install your OS:
+- Open these files with **elevated** 7zip, since we are writing into the Git folder inside Program Files, and this folder is a system folder. There are one more archive files within Pacman and keyring files. Open inner ones and extract all folders and as well as mirrorlists.zip contents into git for windows directory (default folder is C:\Program Files\Git)
+- Open `git-bash.exe` with **elevated rights** :
 
-    - [ ] [FiraCode NF Regular.ttf](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete%20Windows%20Compatible.ttf?raw=true)
-    
-    - [ ] [FiraCode NF Bold.ttf](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Bold/complete/Fira%20Code%20Bold%20Nerd%20Font%20Complete%20Windows%20Compatible.ttf?raw=true)
-    
-    - [ ] [FiraCode NF Light.ttf](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Light/complete/Fira%20Code%20Light%20Nerd%20Font%20Complete%20Windows%20Compatible.ttf?raw=true)
-    
-    - [ ] [FiraCode NF Medium.ttf](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Medium/complete/Fira%20Code%20Medium%20Nerd%20Font%20Complete%20Windows%20Compatible.ttf)
-    
-      > *Windows users can install via* `choco install firacodenf -y` *as well.*
+```bash
+set "PATH=%programfiles%\Git\usr\bin"
+bash pacman-key --init
+bash pacman-key --populate msys2
+bash pacman-key --refresh-keys
+pacman -Tv
+pacman -Syuv --overwrite='*'
+pacman --version
+pacman -Sv --noconfirm --overwrite='*' bash 
+# this install might stuck at infinite loop, if so
+# close git bash window and reopen it as elevated
+# run the last command again
+pacman -Sv --noconfirm --overwrite='*' rsync
+pacman -Sv --noconfirm --overwrite='*' util-linux
+```
 
-## Terminal Emulator
+*source:* [*https://github.com/Alexpux/MSYS2-pacman/issues/50#issuecomment-602141995*](https://github.com/Alexpux/MSYS2-pacman/issues/50#issuecomment-602141995)
+
+- Test if Pacman is working:
+
+```bash
+# tree command is not installed, run tree to check
+  tree 
+  # so let's install
+  pacman -S tree
+  # test tree command as below
+  tree -dL 2
+  pacman -S zsh --overwrite='*' --noconfirm
+  # we are also doing one of major installation at the line above 😉
+```
+
+*Note: If you face any errors during installation of any package with Pacman, rerun the same install command with* `--overwrite='*'` *option*
+
+- To configure directory mount points, Open `git-bash.exe` with **elevated rights** and run `nano /etc/fstab`
+
+```bash
+# modify the lines below "DO NOT REMOVE NEXT LINE"
+# DO NOT REMOVE NEXT LINE. It remove cygdrive prefix from path
+none /mnt cygdrive binary,posix=0,noacl,user 0 0
+# All drives will be mounted under /mnt eg /mnt/c /mnt/d just like in WSL
+none /tmp usertemp binary,posix=0,noacl 0 0
+/mnt/c/Users /home auto bind,binary,posix=0,noacl,user 0 0
+# binding c:\Users to /home so user homedir will be /home/<user>
+```
+
+Save and exit nano editor with `CTRL+X` and confirm changes.
+
+After a restart, open git bash, and type `pwd; your` user profile directory should be `/home/<username>`
+
+### Fonts
+
+![img](https://cdn-images-1.medium.com/max/800/0*JMezkzuPRZB7qvPc)Photo by [Markus Spiske](https://unsplash.com/@markusspiske?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)
+
+The fonts we are installing here are powerline symbols added fonts. These fonts are also known as NerdFonts. Please take a look at https://www.nerdfonts.com/. Here below, shorthand for downloading our preferred fonts. MesloLGS NF is the recommended font for the powerlevel10k theme. FiraCode is one of the most preferred coding editor fonts. FiraCode supports ligatures, joining of adjacent characters as a single one for readability. Here below are the powerline patched ones. You can also use it for the terminal windows as well. It is up to you.
+
+MesloLGS NF: download these four TTF files below and install your OS:
+
+- [MesloLGS NF Regular.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS NF Regular.ttf)
+- [MesloLGS NF Bold.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS NF Bold.ttf)
+- [MesloLGS NF Italic.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS NF Italic.ttf)
+- [MesloLGS NF Bold Italic.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS NF Bold Italic.ttf)
+
+*Note: if you are a macOS user and using iterm2, the powerlevel10k setup* `p10k configure` *will automatically download MesloLGS NF fonts for you. Answer* `Yes` *when p10k asks you to install Meslo Nerd Font.*
+
+FiraCode NF: download these four TTF files below and install your OS:
+
+- [FiraCode NF Regular.ttf](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Regular/complete/Fira Code Regular Nerd Font Complete Windows Compatible.ttf?raw=true)
+- [FiraCode NF Bold.ttf](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Bold/complete/Fira Code Bold Nerd Font Complete Windows Compatible.ttf?raw=true)
+- [FiraCode NF Light.ttf](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Light/complete/Fira Code Light Nerd Font Complete Windows Compatible.ttf?raw=true)
+- [FiraCode NF Medium.ttf](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Medium/complete/Fira Code Medium Nerd Font Complete Windows Compatible.ttf)
+
+*Windows users can install via* `choco install firacodenf -y` *as well.*
+
+Linux and macOS users need to set the terminal font as MesloLGS NF in their terminal app’s settings.
+
+### Terminal Emulator
+
+![img](https://cdn-images-1.medium.com/max/800/0*qh1t7BI6EWHoWylw)Photo by [Joan Gamell](https://unsplash.com/@gamell?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)
+
+We will enhance the terminal experience with terminal applications, fonts, and command shells with the help of zsh, its companion extension oh-my-zsh, and the shining powerlevel10k theme. In addition to this trilogy, syntax highlighting and auto-suggestion plugins on the terminal will boost your productivity.
 
 ### - Windows 10
 
-  - **WSL Ubuntu 20.04 Setup**
+**WSL Ubuntu 20.04 Setup**
 
-    Before installing any Linux distributions on Windows, you must enable the "Windows Subsystem for Linux" optional feature.
+Before installing any Linux distributions on Windows, you must enable the “Windows Subsystem for Linux” optional feature.
 
-    - [ ] Install the Windows Subsystem for Linux
+Install the Windows Subsystem for Linux
 
-      - [ ] Open `powershell.exe` with **[elevated rights](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)** (click start and type `powershell.exe` then click the application with `ctrl+shift` pressed) and run following commands:
-
-        ```powershell
-        dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-        dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-        Restart-Computer
-        ```
-
-    - [ ] Set WSL 2 as your default version
+- Open `powershell.exe` with [**elevated rights**](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/) and run the following commands:
 
 ```powershell
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+Restart-Computer
+```
+
+- Set WSL 2 as your default version
+
+```bash
 wsl --set-default-version 2
 ```
 
-This will require you to update WSL linux kernel you can download from [Microsoft](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi) . If you dismissed to upgrade to version 2, it is not a big deal WSL still works, but the version 2 is optimized compared to version 1. Later on you can upgrade your ubuntu WSL version by typing the command below:
+This will require you to update the WSL Linux kernel you can download from [Microsoft](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi). If you dismissed to upgrade to version 2, it is not a big deal WSL still works, but version 2 is optimized compared to version 1. Later on, you can upgrade your Ubuntu WSL version by typing the command below:
 
-```powershell
+```bash
 wsl --set-version Ubuntu-20.04 2
-# update Ubuntu-20.04 if you installed different distribution
-# you can see which distributions are installed and their versions by typing:
-wsl -l -v
 ```
 
+*If you installed different distribution, you can see which distributions are installed and their versions by typing:* `wsl -l -v`
 
+**Install WSL Ubuntu from the Windows Store. (**[**Ubuntu-20.04**](https://aka.ms/wslubuntu2004)**)**
 
-  - [ ] Install WSL Ubuntu from the Windows Store. ([Ubuntu-20.04](https://aka.ms/wslubuntu2004))
+![img](https://cdn-images-1.medium.com/max/800/1*mhuDalVXDNkm080C_o-v6A.png)Ubuntu distributions on Windows Store
 
-    <img src="./assets/ubuntu_ws.png" alt="ubuntu_ws" style="zoom:50%;" />
+![img](https://cdn-images-1.medium.com/max/800/1*ivBmKR3gHIk7Xv-m3440RQ.png)Ubuntu 20.04 LTS on Windows Store
 
-    <img src="./assets/ubuntu_ws2.png" alt="ubuntu_ws2" style="zoom: 50%;" />
+or download via PowerShell :
 
-  - [ ] or download via powershell or curl:
+```powershell
+Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile Ubuntu2004.appx -UseBasicParsing
+```
 
-    ```powershell
-    Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile Ubuntu2004.appx -UseBasicParsing
-    ```
+or using curl:
 
-    ```bash
-    curl -L -o Ubuntu-2004.appx https://aka.ms/wslubuntu2004
-    ```
+```bash
+curl -L -o Ubuntu-2004.appx https://aka.ms/wslubuntu2004
+```
 
-​    to install manually downloaded appx package:
+to install a manually downloaded appx package:
 
 ```powershell
 Add-AppxPackage .\Ubuntu2004.appx
 ```
 
+Launch `Ubuntu2004.exe` and do initial user name and password stuff: (you will need this password when you need root access on WSL Ubuntu) (note: password entry is not visible, but it accepts while you are typing.)
 
+![img](https://cdn-images-1.medium.com/max/800/1*BNaB8tqU7Bav5QqKg_TloQ.png)Ubuntu WSL initial user setup
 
-  - [ ] Launch `Ubuntu2004.exe` and do initial user name, and password stuff: (you will need this password when you need root access on WSL Ubuntu) (note: password entry is not visible but it accepts while you are typing.)
+Please follow Shell Setup to have zsh and oh-my-zsh and powerlevel10k theme trilogy on WSL Ubuntu.
 
-    ![Initial Setup](https://docs.microsoft.com/en-us/windows/wsl/media/ubuntuinstall.png)
+**Windows Terminal**
 
-    
+- Install Windows Terminal from the [Windows Store](https://aka.ms/terminal).
 
+  [<img src="https://img.youtube.com/vi/8gw0rXPMMPE/maxresdefault.jpg" style="zoom:;" >](https://youtu.be/8gw0rXPMMPE)
 
-- [ ] Save file and close nano and restart Ubuntu-20.04
+<img src="https://cdn-images-1.medium.com/max/800/1*FEWdOrHo-uyUTs8Cz9evTA.png" alt="img" style="zoom:67%;" />Windows Terminal apps on Windows Store
 
-- [ ] Please follow [Shell Setup](#shell-setup) in order to have zsh and oh-my-zsh and powerlevel10k theme triology on WSL Ubuntu as well.
+<img src="https://cdn-images-1.medium.com/max/800/1*eRCx4qjiS0VF-lCBbHXXRg.png" alt="img" style="zoom:67%;" />Windows Terminal on Windows Store
 
- - **Windows Terminal**
+- or via PowerShell:
 
-   - [ ] Install Windows Terminal from the [Windows Store](https://aka.ms/terminal). 
+```powershell
+Invoke-WebRequest -Uri https://github.com/microsoft/terminal/releases/download/v1.4.3243.0/Microsoft.WindowsTerminal_1.4.3243.0_8wekyb3d8bbwe.msixbundle -OutFile wt.msixbundle -UseBasicParsing
+Add-AppxPackage .\wt.msixbundle
+```
 
-   - [ ] or via powershell:
+Windows Terminal is configured for the build-in cmd.exe, powershell.exe, and WSL Ubuntu automatically. However, we still need to change default fonts and some stuff to beautify our terminal, and we also need to add git bash and git zsh entries to the windows terminal settings file. Let’s do that.
 
-     ```powershell
-     Invoke-WebRequest -Uri https://github.com/microsoft/terminal/releases/download/v1.4.3243.0/Microsoft.WindowsTerminal_1.4.3243.0_8wekyb3d8bbwe.msixbundle -OutFile wt.msixbundle -UseBasicParsing
-     
-     Add-AppxPackage .\wt.msixbundle
-     ```
+For your convenience, before setting up the windows terminal, it is advised to install visual studio code; since you can use vscode to edit configuration easily, vscode will auto-complete while you are typing some values for the windows terminal. See Other Tools for installation details.
 
-     <img src="./assets/win_term_ws.png" alt="win_term_ws" style="zoom:50%;" />
+- Open the windows terminal app.
 
-     <img src="./assets/win_term_ws2.png" alt="win_term_ws2" style="zoom:50%;" />
+<img src="https://cdn-images-1.medium.com/max/800/1*o2kyeakrSDGy8JGwBt0Bsg.png" alt="img" style="zoom:67%;" />
 
-   Windows Terminal is configured for the build-in cmd.exe, powershell.exe and wsl ubuntu automatically. However we still need to change default fonts and some stuff to beautify our terminal, and also we need to add git bash and git zsh entries to windows terminal settings file. Let's do that.
+Open Windows Terminal `settings.json` , as seen above. Default editor will open the file. In the editor, find the `"defaults":` section and modify with the content below:
 
-   - [ ] For your convenience, prior to setting up windows terminal, it is advised to install visual studio code, since you can use vscode to edit configuration easily, vscode will autocomplete while you are typing some values for windows terminal. 
-
-See [Other tools](#other-tools) for installation details.
-
-   - [ ] Open windows terminal app.
-
-     ![image-20201230152636302](./assets/win_term1.png)
-
-   - [ ] Open Windows Terminal settings.json as seen above. Default editor will open the file. In the editor find the `"defaults":` section and modify with the content below:
-   
-     ```json
-         {
-           "defaults": {
-             // Put settings here that you want to apply to all profiles.
-                 "startingDirectory": "$HOME",
-                 "fontFace": "MesloLGS NF", // "JetBrainsMono NF"  // "FiraCode NF"
-                 "fontSize": 16,
-                 "fontWeight": "semi-light",
-                 "cursorColor" : "#FFFFFF",
-                 "cursorShape" : "bar",
-                 "historySize" : 9001,
-                 "padding": "6, 2",
-                 "backgroundImage": "%USERPROFILE%\\Pictures\\cwlogo106.png",
-               // please copy this image from assets directory to your pictures folder
-                 "backgroundImageAlignment": "bottomRight",
-                 "backgroundImageStretchMode": "none",
-                 "backgroundImageOpacity": 0.5
-           },
-             "list":
-             [
-                {
-                     "guid": "{12396def-8d0e-4ab1-a9cf-3d842633ca92}",
-                    // this is a random hexadecimal guid number feel free to change whatever you want, keep the length same
-                    // please note that this numbers should be unique to each entry on windows terminal list here
-                    // and we will use this guid to address default shell at windows terminal start
-                     "closeOnExit" : true,
-                     "commandline" : "\"%PROGRAMFILES%\\git\\bin\\bash.exe\" --login -i -l -c 'exec zsh'",
-                     "startingDirectory": "$HOME",
-                     "icon" : "%PROGRAMFILES%\\git\\mingw64\\share\\git\\git-for-windows.ico",
-                     "name" : "Git Zsh"
-                 },           {
-                     "guid": "{45696bce-8d0e-4ab1-a9cf-3d842633ca92}",
-                     "closeOnExit" : true,
-                     "commandline" : "\"%PROGRAMFILES%\\git\\bin\\bash.exe\" --login -i -l",
-                     "cursorColor" : "#FFFFFF",
-                     "cursorShape" : "bar",
-                     "historySize" : 9001,
-                     "padding": "4, 4",
-                     "startingDirectory": "$HOME",
-                     "icon" : "%PROGRAMFILES%\\git\\mingw64\\share\\git\\git-for-windows.ico",
-                     "name" : "Git Bash"
-                 },
-                 {
-                     "guid": "{18c52f4f-de2c-5db4-bd2d-ba144ed6c273}",
-                     "hidden": false,
-                     "name": "Ubuntu-20.04 Zsh",
-                     "tabTitle": "Zsh",
-                     "icon": "%USERPROFILE%\\Pictures\\ubuntu1.png",
-                     // you may delete above line if you like penguin icon 🐧
-                     "commandline" : "wsl --distribution Ubuntu-20.04 zsh"
-                 },
-                 {
-                     "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
-                     "hidden": false,
-                     "name": "Ubuntu-20.04",
-                     "icon": "%USERPROFILE%\\Pictures\\ubuntu.png",
-                     // you may delete above line if you like penguin icon 🐧           
-                     "source": "Windows.Terminal.Wsl"
-                 },
-                 {
-                     // Make changes here to the powershell.exe profile.
-                     "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                     "name": "Windows PowerShell",
-                     "commandline": "powershell.exe -NoLogo",
-                     "colorScheme": "Campbell Powershell",
-                     "hidden": false
-                 }, 
-                 {
-                     // Make changes here to the cmd.exe profile.
-                     "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                     "name": "Command Prompt",
-                     "commandline": "cmd.exe /k cls",
-                     "hidden": false
-                 },
-                 {
-                     "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-                     "hidden": true,
-                     "name": "Azure Cloud Shell",
-                     "source": "Windows.Terminal.Azure"
-                 }
-             ]
+```json
+{
+      "defaults": {
+        // Put settings here that you want to apply to all profiles.
+            "startingDirectory": "$HOME",
+            "fontFace": "MesloLGS NF", // "JetBrainsMono NF"  // "FiraCode NF"
+            "fontSize": 16,
+            "fontWeight": "semi-light",
+            "cursorColor" : "#FFFFFF",
+            "cursorShape" : "bar",
+            "historySize" : 9001,
+            "padding": "6, 2",
+            "backgroundImage": "%USERPROFILE%\\Pictures\\cwlogo106.png",
+          // please copy this image from assets directory to your pictures folder
+            "backgroundImageAlignment": "bottomRight",
+            "backgroundImageStretchMode": "none",
+            "backgroundImageOpacity": 0.5
       },
-     ```
+        "list":
+        [
+           {
+                "guid": "{12396def-8d0e-4ab1-a9cf-3d842633ca92}",
+               // this is a random hexadecimal guid number feel free to change whatever you want, keep the length same
+               // please note that this numbers should be unique to each entry on windows terminal list here
+               // and we will use this guid to address default shell at windows terminal start
+                "closeOnExit" : true,
+                "commandline" : "\"%PROGRAMFILES%\\git\\bin\\bash.exe\" --login -i -l -c 'exec zsh'",
+                "startingDirectory": "$HOME",
+                "icon" : "%PROGRAMFILES%\\git\\mingw64\\share\\git\\git-for-windows.ico",
+                "name" : "Git Zsh"
+            },           {
+                "guid": "{45696bce-8d0e-4ab1-a9cf-3d842633ca92}",
+                "closeOnExit" : true,
+                "commandline" : "\"%PROGRAMFILES%\\git\\bin\\bash.exe\" --login -i -l",
+                "cursorColor" : "#FFFFFF",
+                "cursorShape" : "bar",
+                "historySize" : 9001,
+                "padding": "4, 4",
+                "startingDirectory": "$HOME",
+                "icon" : "%PROGRAMFILES%\\git\\mingw64\\share\\git\\git-for-windows.ico",
+                "name" : "Git Bash"
+            },
+            {
+                "guid": "{18c52f4f-de2c-5db4-bd2d-ba144ed6c273}",
+                "hidden": false,
+                "name": "Ubuntu-20.04 Zsh",
+                "tabTitle": "Zsh",
+                "icon": "%USERPROFILE%\\Pictures\\ubuntu1.png",
+                // you may delete above line if you like Tux icon 🐧
+                "commandline" : "wsl --distribution Ubuntu-20.04 zsh"
+            },
+            {
+                "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+                "hidden": false,
+                "name": "Ubuntu-20.04",
+                "icon": "%USERPROFILE%\\Pictures\\ubuntu.png",
+                // you may delete above line if you like Tux icon 🐧           
+                "source": "Windows.Terminal.Wsl"
+            },
+            {
+                // Make changes here to the powershell.exe profile.
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "name": "Windows PowerShell",
+                "commandline": "powershell.exe -NoLogo",
+                "colorScheme": "Campbell Powershell",
+                "hidden": false
+            }, 
+            {
+                // Make changes here to the cmd.exe profile.
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "name": "Command Prompt",
+                "commandline": "cmd.exe /k cls",
+                "hidden": false
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "hidden": true,
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure"
+            }
+        ]
+ },
+```
 
-   - [ ] And also we need to modify default profile line addressing whichever we want:
-   
-     ```json
-      "defaultProfile": "{12396def-8d0e-4ab1-a9cf-3d842633ca92}",
-      // please note that this is git zsh entry's guid number we set in the settings.json file above.
-      // if you modified the guid number, make sure to set the same value here as well
-     ```
+And also, we need to modify the default profile line addressing whichever we want:
 
-     Save the settings.json file, if there are syntax any errors, e.g. comma, double quote, parenthesis,  windows terminal will warn you about this. If no errors then windows terminal will refresh itself with the settings we just did. You can change this options any time by editing settings file.
-   
-     > *Note: To see what are the default options for windows terminal, just hold* `Alt` *key while clicking setting on windows terminal window. Yo may take a look at all default values for the terminal.* 
+```json
+"defaultProfile": "{12396def-8d0e-4ab1-a9cf-3d842633ca92}",
+ // please note that this is git zsh entry's guid number we set in the settings.json file above.
+ // if you modified the guid number, make sure to set the same value here as well
+```
 
-*You can download ubuntu icon file here: [Ubuntu Circle of Friends set for web (513 KB)](https://assets.ubuntu.com/v1/9fbc8a44-circle-of-friends-web.zip)*
+Save the settings.json file. If there are syntax errors, e.g., comma, double quote, parenthesis,  windows terminal will warn you about this. If no errors, then the windows terminal will refresh itself with the settings we just did. You can change these options any time by editing the settings file.
 
- <a href="https://assets.ubuntu.com/v1/9fbc8a44-circle-of-friends-web.zip" title="Image from design.ubuntu.com"><img src="https://assets.ubuntu.com/v1/1be42010-cof_orange_hex.jpg" width="128" alt="Ubuntu official logo" style="zoom: 67%;" /></a>
+*Note: To see the windows terminal's default options, hold* `Alt` *key while clicking the windows terminal window's setting. You may take a look at all default values for the terminal.*
 
-*For the glossy ubuntu icon you can find it [here](https://www.file-extensions.org/ubuntu-file-extensions)* 
+<img src="https://cdn-images-1.medium.com/max/600/1*DtQuJxsA49pWy74nVvDLWg.png" alt="img" style="zoom: 50%;" />[Glossy unofficial Ubuntu logo](https://www.file-extensions.org/ubuntu-file-extensions)
 
-<img src="https://www.file-extensions.org/imgs/app-icon/128/6909/ubuntu-icon.png" alt="Glossy ubuntu icon" style="zoom:80%;"/>
+*You can download the official Ubuntu icon file here:* [*Ubuntu Circle of Friends set for web (513 KB)*](https://assets.ubuntu.com/v1/9fbc8a44-circle-of-friends-web.zip)
 
+<img src="https://cdn-images-1.medium.com/max/600/1*bx64P_m_JEQWajHwkUFqDg.png" alt="Ubuntu Circle of Friends official logo" style="zoom:25%;" />[Official Ubuntu logo](https://assets.ubuntu.com/v1/1be42010-cof_orange_hex.jpg)
 
-  - If you also would like to install Cmder Mini on Windows 10, please follow the instructions for Windows 8.1 and Windows 7 below.
+If you also would like to install Cmder Mini on Windows 10, please follow the instructions for Windows 8.1 and Windows 7 below.
 
-### Windows 8.1 and Windows 7
+### - Windows 8.1 and Windows 7
 
-- Install Cmder Mini
+Install Cmder Mini
 
-  - [ ] Open `powershell.exe` or `cmd.exe` with **elevated rights** (click start and type `powershell.exe` or `cmd.exe` then click the application with `ctrl+shift` pressed), and run
+<img src="https://cdn-images-1.medium.com/max/800/1*KDXocg5hjeay_VXOS7tGKQ.png" alt="img" style="zoom: 80%;" />
 
-    ```powershell
-    choco install cmdermini -y
-    ```
+Cmder official page screenshot
 
-    or download cmder mini from cmder web site: https://cmder.net/
+- Open `powershell.exe` or `cmd.exe` with **elevated rights**, and run
 
-    <img src="./assets/cmder_mini.png" alt="cmder mini" style="zoom: 80%;" />
-  
-- Configure Cmder Mini
+```powershell
+choco install cmdermini -y
+```
 
-  This part is very complex due to cmder setting panel, we will try to simplify as much as we can. Here below an animated gif for cmder mini initial setup. For advanced setup, you may take a look every item in settings window.
+<img src="https://cdn-images-1.medium.com/max/800/1*FYq87n4d25BbiYSo09T_eQ.png" alt="img" style="zoom:67%;" />
 
-  Cmder mini should be installed in `C:\tools\cmdermini`folder. If you installed in a different location change relevant setting accordingly.
+cmder mini download
 
-  > You may want to copy either these  symbols: ⚡, 👑 or whatever you like.
-  
-  ![cmdermini_setup](./assets/cmdermini_setup.gif)
-  
-- You can set for each profile in cmdermini tasks section the startup directory to any directory you want, eg home directory.
+or download cmder mini from cmder web site: https://cmder.net/
 
-- To continue setting zsh up, you may jump to [Install oh-my-zsh section](#--install-oh-my-zsh)
+- **Configure Cmder Mini**
 
-### macOS
+This part is very complex due to the Cmder setting panel. We will try to simplify as much as we can. Here below an animated gif for the cmder mini initial setup. For advanced setup, you may take a look at every item in the settings window.
 
-- Install iterm2
+![img](https://cdn-images-1.medium.com/max/800/1*7DLkzKM-PrpiKhgAA5xtCw.gif)
 
-  - [ ] `brew install iterm2`
+Cmder mini should be installed in the folder`C:\tools\cmdermini`. If you installed in a different location, change the relevant setting accordingly.
 
-    or download iterm2 from its website: https://iterm2.com/
+*You may want to copy either these symbols:* ⚡ 👑 *or whatever you like as the admin indicator symbol.*
 
-    <img src="./assets/iterm2.png" alt="iterm2" style="zoom: 50%;" />
+You can set each profile in the Cmder mini tasks section of the startup directory to any directory you want, e.g., home directory.
 
-  > *macOS comes with stock "Terminal.app", but it is recommended to install iterm2.*
-  
-  On preferences change terminal font to "MesloLGS NF", it is done.
+*Note: If you cannot see MesloLGS NF font on the command prompt font settings, after installing it, you can register the font using the Cmder mini settings as seen below.*
 
-### Linux
+<img src="https://cdn-images-1.medium.com/max/800/1*9Dsmtiy26jwNN-hAqXuM7w.png" alt="img" style="zoom: 80%;" />
 
-- No need to install terminal emulator, you can use stock [Gnome Terminal.](https://www.wikiwand.com/en/GNOME_Terminal)
+<img src="https://cdn-images-1.medium.com/max/800/1*AyBGbWNGrSMRVpmTqoECqw.png" alt="img" style="zoom:80%;" />Cmder Mini register font as console TrueType font
 
-## Shell Setup
+<img src="https://cdn-images-1.medium.com/max/800/1*LczF9AzTxX_7ZeiSsEdZkA.png" alt="img" style="zoom:80%;" />
+
+To continue setting zsh up, you may jump to the “Install Oh-my-zsh” on Shell Setup.
+
+### - macOS
+
+Install iterm2.
+
+<img src="https://cdn-images-1.medium.com/max/800/1*nDqYsEKJ3na0TXk7Ud-etw.png" alt="img" style="zoom:50%;" />
+
+- `brew install iterm2`
+
+Or download iterm2 from its website: https://iterm2.com/.
+
+*macOS comes with stock “Terminal.app”, but it is recommended to install iterm2.*
+
+On preferences, change the terminal font to “MesloLGS NF” it is done.
+
+### - Linux
+
+No need to install a terminal emulator. You can use the stock [Gnome Terminal.](https://www.wikiwand.com/en/GNOME_Terminal)
+
+### Shell Setup
+
+<img src="https://cdn-images-1.medium.com/max/800/0*8wtKe7g1d_cEs9as" alt="img" style="zoom:80%;" />
+
+Photo by [Sai Kiran Anagani](https://unsplash.com/@_imkiran?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)
+
+Zsh is the very customizable shell in Unix platforms, Thanks to msys2 implementation on Git for Windows, and Linux virtualization on Windows Subsystem for Linux, in short WSL. You can have the pleasure of this shell on the windows platform too. Windows 10 has a shiny Windows Terminal application. Windows 8 and 7 users, don’t worry. There is an almost similar alternative to the Windows Terminal app for you. It is Cmder. We will install this terminal client for windows 7, 8.1 systems. Windows 10 users can also give it a try if they’d like to.
 
 ### - Install zsh
 
 - **Windows 10**
 
-  - [ ] Open `git-bash.exe` with **elevated rights** (click start and type `git bash` then click the application with `ctrl+shift` pressed) and run`pacman -S zsh --noconfirm --overwrite='*'`.
+Open `git-bash.exe` with **elevated rights,** and run`pacman -S zsh --noconfirm --overwrite='*'`.
 
-*Please note that, in order to run above command, you should have* [configured git for windows](#configure-git-for-windows).
+*Please note that to run the above command, you should have* [configured git for windows](#configure-git-for-windows).
 
-- [ ] Open Windows Terminal from start menu, and select Ubuntu 20.04 from the list at the tab bar of the application, update WSL Ubuntu repository database and pre-installed applications by typing following command on Ubuntu console:
+Open Windows Terminal from the start menu, and select Ubuntu 20.04 from the list at the tab bar of the application, update WSL Ubuntu repository database, and pre-installed applications by typing the following command on Ubuntu console:
 
-  ```bash
-  sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y
-  ```
+```
+sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y
+```
 
-- [ ] And run `sudo apt install zsh -y`
+And run `sudo apt install zsh -y`
 
-*Please note that, in order to run above command, you should have installed WSL Ubuntu and configured Windows Terminal on* [Terminal Emulator Windows 10 Section](#terminal-emulator).
+*Please note that you should have installed WSL Ubuntu and configured Windows Terminal on* [Terminal Emulator Windows 10 Section](#terminal-emulator) to run the above command.
 
-- [ ] Changing directory colors:
+**Changing directory colors:**
 
-    *Please check ls output colors in ntfs partitions, e.g. your user profile directory on windows, you may see some file's colors as inverted when you run* `ls` *command. The default colors used in* `ls`, *we have some bad background highlighting issues, let's fix that. Open Ubuntu-20.04 app* 
+<img src="https://cdn-images-1.medium.com/max/600/1*NwW_ldsNacUNlxo45E28og.png" alt="img" style="zoom: 67%;" />Directory colors seem inverted on WSL Ubuntu in the Windows partition.
 
-    - [ ] Create a `.dircolors` file as follows: `dircolors -p > ~/.dircolors`
+*Please check ls output colors in NTFS partitions, e.g., your user profile directory on windows. You may see some file’s colors as inverted when you run* `ls` *command. The default colors used in* `ls` command, *we have some bad background highlighting issues. Let's fix that. Open Ubuntu-20.04 app*
 
-      You now have a .dircolors file containing the color configuration for `ls`, which is stored in the env variable LS_COLORS. What we need to do next is make a change to the colors, and save it back to LS_COLORS.
+Create a `.dircolors` file as follows: `dircolors -p > ~/.dircolors`
 
-    - [ ] Run`nano ~/.dircolors` , and modify with the settings below. We're removing the background from OTHER_WRITABLE, and fixing the font color for the rest:
+You now have a .dircolors file containing the color configuration to`ls` command, stored in the env variable LS_COLORS. We need to make a change to the colors and save them back to LS_COLORS.
 
-      Change `SETUID` to: `SETUID 00;30;41`
+Run`nano ~/.dircolors` And modify with the settings below. We're removing the background from OTHER_WRITABLE and fixing the font color for the rest:
 
-      Change `SETGID` to: `SETUID 00;30;43`
+Change `SETUID` to: `SETUID 00;30;41`
 
-      Change `CAPABILITY` to: `CAPABILITY 00;30;41`
+Change `SETGID` to: `SETUID 00;30;43`
 
-      Change `STICKY_OTHER_WRITABLE` to: `STICKY_OTHER_WRITABLE 00;30;42`
+Change `CAPABILITY` to: `CAPABILITY 00;30;41`
 
-      Change `OTHER_WRITABLE` to: `OTHER_WRITABLE 01;32`
+Change `STICKY_OTHER_WRITABLE` to: `STICKY_OTHER_WRITABLE 00;30;42`
 
-      Change `STICKY` to: `STICKY 00;30;44`
+Change `OTHER_WRITABLE` to: `OTHER_WRITABLE 01;32`
 
-      Save and exit `CTRL+X`and confirm changes. 
+Change `STICKY` to: `STICKY 00;30;44`
 
-      - [ ] To make this settings permanent on our shell, we need to add the line below. Edit `nano ~/.zshrc` and add the following line:  *please note to the back ticks* (`) *not single quote*(')
+Save and exit `CTRL+X`and confirm changes.
 
-      ```bash
-      eval `dircolors ~/.dircolors`
-      ```
+To make these settings permanent on our shell, we need to add the line below. Edit `nano ~/.zshrc` and add the following line:  *please note to the backticks* (`) *not single quote*(')
 
-      or execute following command:
+```
+eval `dircolors ~/.dircolors`
+```
 
-      ```bash
-      sed -i '0,/^$/s//\neval `dircolors ~\/.dircolors`\n/g' ~/.zshrc
-      ```
+or execute the following command:
 
-      > *Please note that:* `.zshrc` *file is per user settings file for zsh,* `.bashrc` *is for bash respectively.*
+```
+sed -i '0,/^$/s//\neval `dircolors ~\/.dircolors`\n/g' ~/.zshrc
+```
 
-- **Windows 7,  8.1**
+*Please note that:* `.zshrc` *file is per user settings file for zsh,* `.bashrc` *is for bash, respectively.*
 
-  - [ ] Open `git-bash.exe` with **elevated rights** (click start and type `git bash` then click the application with `ctrl+shift` and run`pacman -S zsh --noconfirm --overwrite='*'` 
+- **Windows 7, 8.1**
 
-    > *Please note that, in order to run above command, you should have* 
-    > [configured git for windows](#configure-git-for-windows).
-  
+Open `git-bash.exe` with **elevated rights,** and run`pacman -S zsh --noconfirm --overwrite='*'`
+
+*Please note that to run the above command, you should have* [configured git for windows](#configure-git-for-windows).
+
 - **macOS**
 
-  *macOS Catalina and beyond comes with zsh as default shell. However it is recommended to upgrade stock zsh via homebrew for your convenience. For macOS Mojave you need to install zsh.*
+*macOS Catalina and beyond comes with zsh as the default shell. However, it is recommended to upgrade stock zsh via homebrew for your convenience. For macOS Mojave, you need to install zsh.*
 
-  - [ ] Open `terminal.app`or `iterm2.app`from launchpad or `in spotlight via Command + spacebar` and type iterm or terminal and in the terminal window run `brew install zsh`
+Open `terminal.app`or `iterm2.app`from the launchpad or `in spotlight via Command + spacebar` and type iterm or terminal and in the terminal window run `brew install zsh`
 
 - **Linux**
 
-  - [ ] Open terminal app and run `sudo apt install zsh -y`
+Open the terminal app and run `sudo apt install zsh -y`
 
 ### - Install oh-my-zsh
 
-Installation instructions in this section applies to all operating systems, please be advised that, for windows systems you need to complete git for windows installation and its configuration mentioned above.
+<img src="https://cdn-images-1.medium.com/max/800/1*LlFRMw9Gohx5DcPUL2GZEw.png" alt="img" style="zoom:80%;" />
 
-- Run following command at bash/zsh shell terminal:
+Installation instructions in this section apply to all operating systems. Please be advised that you need to complete git for windows installation for windows systems and its configuration mentioned above.
 
-  ```bash
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  ```
+Run the following command at bash/zsh shell terminal:
 
-*This will clone the repository and replace the existing* `~/.zshrc` *with a template from* [oh-my-zsh](https://ohmyz.sh/)
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
 
-<img src="./assets/ohmzsh.png" alt="oh-my-zsh" style="zoom: 67%;" />
+*This will clone the repository and replace the existing* `~/.zshrc` *one with a template from* [oh-my-zsh](https://ohmyz.sh/)
 
-*The install might have asked you to make* `zsh` *as your Login Shell. Due to implementation of shell on Git Bash, chsh command is not available *on git for windows bash. We will turn around this issue later on.*
+*The install might have asked you to make* `zsh` *as your Login Shell. Due to the implementation of shell on Git Bash, the chsh command is not available *on git for windows bash. We will turn around this issue later on.*
 
-*Except Git Bash, feel free to change your login shell for zsh when asked, or via running command:* `chsh -s $(which zsh)`  *This setting is user specific, no need to prefix* `sudo`
+*Except for Git Bash, feel free to change your login shell for zsh when asked or via running the command:* `chsh -s $(which zsh)`  *This setting is user-specific, no need to prefix* `sudo`
 
-  - Install plugins:
+**Install plugins:**
 
-    - [ ] Run following command to download zsh-autosuggestions:
+Run the following command to download zsh-autosuggestions:
 
-      *This plugin will give instant suggestions in dimmed color while you type in zsh terminal*
+```bash
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+```
 
-      ```bash
-      git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
-      ```
+*This plugin will give instant suggestions in dimmed color while you type in zsh shell.*
 
-    - [ ] Run following command to download zsh-syntax-highlighting:
+Run the following command to download zsh-syntax-highlighting:
 
-      *This plugin will highlight correctly typed commands with green, wrong ones with red instantly as you type in zsh terminal*
-      
-      ```bash
-      git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-      ```
+```bash
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+```
 
-  - Install powerlevel10k theme on oh-my-zsh and save into user profile:
+*This plugin will highlight correctly typed commands with green, wrong ones with red instantly as you type in the zsh shell.*
 
-    Take a look at romkatv's powerlevel10k repository: https://github.com/romkatv/powerlevel10k
+Install powerlevel10k theme on oh-my-zsh and save into user profile:
 
-    <img src="./assets/powerlevel10k.png" alt="powerlevel10k" style="zoom:67%;" />
-    
-    - [ ] Run following command on bash/zsh shell terminal windows on your computer:
+<img src="https://cdn-images-1.medium.com/max/800/1*JHpTFMFZQyRzC_63tseYew.png" alt="img" style="zoom:80%;" />
 
+The Powerlevel10k repository on Github
+
+Run the following command on bash/zsh shell terminal windows on your computer:
 
 ```bash
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 ```
 
-- [ ] Open your git bash terminal and  in the terminal, execute following commands to set your zsh theme to powerlevel10k and activate plugins just installed above:
+Open your git bash terminal, and in the terminal, execute the following commands to set your zsh theme to powerlevel10k and activate plugins just installed above:
 
-  ```bash
-  sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/g' ~/.zshrc
-  sed -i 's/plugins=[(]git[)]/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
-  ```
+```bash
+sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/g' ~/.zshrc
+sed -i 's/plugins=[(]git[)]/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
+```
 
-  or you may run `nano ~/.zshrc` in the terminal, find the line below and manually replace it with the second line(if you ran the two lines above, it is already done 😉):
-
+or you may run `nano ~/.zshrc` in the terminal, find the line below and manually replace it with the second line(if you ran the two lines above, it is already done 😉):
 
 ```bash
 ZSH_THEME="robbyrussell"
@@ -605,10 +629,11 @@ ZSH_THEME="robbyrussell"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 ```
 
-<img src="./assets/zshtheme.png" alt="zsh theme setting" style="zoom:67%;" />  
+<img src="https://cdn-images-1.medium.com/max/800/1*A1m3XqktK_eZIH8m1k578w.png" alt="img" style="zoom:80%;" />
 
-and manually change the line for plugins  as below:
-    
+zshrc preview
+
+and manually change the line for plugins as below:
 
 ```bash
 plugins=(git)
@@ -616,181 +641,183 @@ plugins=(git)
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 ```
 
-<img src="./assets/plugins.png" alt="plugins" style="zoom:67%;" />
+<img src="https://cdn-images-1.medium.com/max/800/1*TlGsfm8e2ndDl4fPlAWxbA.png" alt="img" style="zoom:67%;" />
 
-  Save and exit nano editor with `CTRL+X` and confirm changes.
+Save and exit nano editor with `CTRL+X` and confirm changes.
 
-- [ ] Run `source ¨/.zshrc` command to update your terminal settings. Powerlevel10K initial setup p10k configure command will check some symbols visibility and configure look and feel as your preference. Recommended font for the terminal is MesloLGS NF, download links above.  For further details, please visit [Powerlevel10k repository](https://github.com/romkatv/powerlevel10k).
+Run the command`source ~/.zshrc` to update your terminal settings. Powerlevel10K initial setup p10k configure command will check some symbols visibility and configure look and feel as your preference. The recommended font for the terminal is MesloLGS NF. Download links above.  For further details, please visit the [Powerlevel10k repository](https://github.com/romkatv/powerlevel10k).
 
-  ![Zsh vs Bash in Windows 7](./assets/win7_cmder_zsh_bash.png)
+**My preferred powerlevel10k setup** is as follows: ( You can reconfigure any time by `p10k configure`) Give it a try which combination you like.
 
-  *Powerlevel10k zsh vs bare bash console in windows 7 on cmder at git for windows*
+- Prompt Style 👉 (1) Lean
+- Character Set 👉 (1) Unicode
+- Prompt Colors 👉 (1) 256 colors
+- Show current time? 👉 (1) No.
+- Prompt Height 👉 (2) Two lines.
+- Prompt Connection👉 (1) Disconnected
+- Prompt Frame👉 (1) No frame.
+- Prompt Spacing👉 (1) Compact.
+- Icons 👉 (2) Many icons.
+- Prompt Flow👉 (1) Concise.
+- Enable Transient Prompt 👉 (y) Yes.
+- Instant Prompt Mode 👉 (2) Quiet
+- Final confirmation 👉 (y) Yes.
 
-   ![wsl ubuntu zsh bash](./assets/win10_wt_wsl_zsh_bash.png)
+*Note: At the integrated terminal on visual studio code in windows 7, you may see redundant percent sign (%) on some terminals above the current prompt line.*
 
-  *Powerlevel10k zsh vs bare bash console in windows 10 on WSL Ubuntu-20.04 at windows terminal*
+![img](https://cdn-images-1.medium.com/max/800/1*fHOwyPurfRBFMHxPniIYxQ.png)
 
-   ![wsl ubuntu zsh bash](./assets/win10_wt_git_zsh_bash.png)
+Redundant % sign on the terminal
 
-  *Powerlevel10k zsh vs bare bash console in windows 10 on git for windows at windows terminal*
+*To solve this redundancy, enter the following lines of commands in git bash or zsh shell:*
 
-- [ ] My preferred powerlevel10k setup is as follows: ( You can reconfigure any time by `p10k configure`)
+```bash
+sed -i '0,/^$/s//\nsetopt PROMPT_CR\nsetopt PROMPT_SP\nexport PROMPT_EOL_MARK=""\n/g' ~/.zshrc
+```
 
-  - Prompt Style :point_right: (1) Lean
-  - Character Set :point_right: (1) Unicode
-  - Prompt Colors :point_right: (1) 256 colors
-  - Show current time? :point_right: (1) No.
-  - Prompt Height :point_right: (2) Two lines.
-  - Prompt Connection:point_right: (1) Disconnected
-  - Prompt Frame:point_right: (1) No frame.
-  - Prompt Spacing:point_right: (1) Compact.
-  - Icons :point_right: (2) Many icons.
-  - Prompt Flow:point_right: (1) Concise.
-  - Enable Transient Prompt :point_right: (y) Yes.
-  - Instant Prompt Mode :point_right: (2) Quiet
-  - Final confirmation :point_right: (y) Yes.
+*or you can manually add the below lines into ~/.zshrc file just after p10k-instant-prompt block below:*
 
-> *Note: At the integrated terminal on visual studio code in windows 7, you may see redundant percent sign (%) on some terminals above the current prompt line.*
->
-> <img src="./assets/vscode-terminal.png" alt="Redundant percent sign" style="zoom: 80%;" />
->
-> *To solve this redundancy enter following lines of commands in git bash or zsh shell:*
->
-> ```bash
-> sed -i '0,/^$/s//\nsetopt PROMPT_CR\nsetopt PROMPT_SP\nexport PROMPT_EOL_MARK=""\n/g' ~/.zshrc
-> ```
->
-> *or you can manually add below lines into ~/.zshrc file  just after p10k-instant-prompt block below:*
->
-> ```shell
-> setopt PROMPT_CR
-> setopt PROMPT_SP
-> export PROMPT_EOL_MARK=""
-> ```
->
-> <img src="./assets/redundant_solution_w7.png" alt="Redundant percent sign solution" style="zoom:67%;" />
->
-> *source: https://superuser.com/a/645612*
+```bash
+setopt PROMPT_CR
+setopt PROMPT_SP
+export PROMPT_EOL_MARK=""
+```
 
+![img](https://cdn-images-1.medium.com/max/800/1*lRwvzixXSXkgvsM5eXBzOQ.png)
 
+*source:* [*https://superuser.com/a/645612*](https://superuser.com/a/645612)
 
-## Other tools
+In the end, you will see a terminal screen like the ones below. Notice the difference at the same path with the zsh, oh-my-zsh, and powerlevel10k trilogy and with the bare bash shell.
 
-  - Install Openssh (Windows 8.1 and 7 only, others have by default)
+![img](https://cdn-images-1.medium.com/max/800/1*sTGgjI22fFhacHVIJxVEJw.png)*Powerlevel10k zsh vs. bare bash console in windows 7 on cmder at git for windows*
 
-    - [ ] Open `powershell.exe` or `cmd.exe` with **elevated rights** (click start and type `powershell.exe` or `cmd.exe` then click the application with `ctrl+shift` pressed), and run
+![img](https://cdn-images-1.medium.com/max/800/1*xAH17lto8kUg3jL27dxhVw.png)*Powerlevel10k zsh vs. bare bash console in windows 10 on WSL Ubuntu-20.04 at windows terminal*
 
-      ```powershell
-      choco install openssh -y
-      ```
-      
-    - [ ] For Windows 10, you can install openssh-server package from either with the above command or with optional features in settings(not in control panel) as well as using powershell.
+![img](https://cdn-images-1.medium.com/max/800/1*gaX1HJx9XBDp53jqZKELBw.png)*Powerlevel10k zsh vs. bare bash console in windows 10 on git for windows at windows terminal*
 
-  - Install Visual Studio Code (vscode)
+### Other tools
 
-    - Windows:
+![img](https://cdn-images-1.medium.com/max/800/0*m1Ss6l3qORxw4nBF)Photo by [Louis Hansel @shotsoflouis](https://unsplash.com/@louishansel?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)
 
-    - [ ] Open `powershell.exe` or `cmd.exe` with **elevated rights** (click start and type `powershell.exe` or `cmd.exe` then click the application with `ctrl+shift` pressed), and run
+**Install Openssh** (Windows 8.1 and 7 only, others have by default)
 
-      ```powershell
-      choco install vscode -y
-      ```
+Open `powershell.exe` or `cmd.exe` with **elevated rights**, and run
 
-    - Linux (Ubuntu):
+```
+choco install openssh -y
+```
 
-      ```bash
-      snap install vscode --classic
-      ```
+For Windows 10, you can install the OpenSSH-server package from either with the above command or with optional features in settings(not in the control panel) as well as using PowerShell.
 
-    - macOS:
+**Install Visual Studio Code (vscode)**
 
-      ```bash
-      brew install visual-studio-code # to be checked
-      ```
+- Windows:
 
-    You can also download visual studio code from Microsoft: https://code.visualstudio.com/
+Open `powershell.exe` or `cmd.exe` with **elevated rights**, and run
 
-    <img src="./assets/vscodedownload.png" alt="vscode download" style="zoom:80%;" />
+```powershell
+choco install vscode -y
+```
 
-    Let's configure vscode integrated terminal on windows to use git zsh. Open vscode, then bring up settings, and then click on upper right icon to see settings.json in text mode.
+- Linux (Ubuntu):
 
-    ```json
-    {
-        "editor.fontFamily": "'FiraCode NF','JetBrains Mono', Consolas, 'Courier New', monospace",
-        "editor.fontSize": 16,
-        "editor.lineHeight": 24,
-        "editor.fontWeight": "400",
-        "editor.fontLigatures": true, 
-        "editor.renderWhitespace": "none",
-        "editor.suggestSelection": "first",
-        "editor.minimap.enabled": false,
-        "editor.cursorStyle": "line-thin",
-        "editor.wordWrapColumn": 120,
-        "editor.wordWrap": "wordWrapColumn",
-        "editor.mouseWheelZoom": true,
-        "editor.formatOnSave": true,
-        "editor.formatOnPaste": true,
-        "breadcrumbs.enabled": true,
-        "terminal.integrated.fontFamily": "MesloLGS NF",
-        "terminal.integrated.fontSize": 18,
-        "terminal.integrated.cursorStyle": "line",
-        "terminal.integrated.cursorBlinking": true,
-        "terminal.integrated.env.windows": {"TERM": "xterm-256color"},
-        "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
-        "terminal.integrated.shellArgs.windows": ["--command=../usr/bin/zsh.exe", "-i"],
-        "terminal.integrated.cwd": "${fileDirname}",
-        "terminal.integrated.drawBoldTextInBrightColors": false,
-        "terminal.integrated.enableBell": true,
-        "terminal.integrated.fontWeight": "300",
-        "terminal.integrated.fontWeightBold": "400",
-        "terminal.integrated.mouseWheelScrollSensitivity": 2,
-        "terminal.integrated.scrollback": 5000,
-        "window.zoomLevel": 0,
-    }
-    ```
+```
+snap install vscode - classic
+```
 
-    ![vscodefinish](./assets/vscodefinish.gif)
+- macOS:
 
-- Screen capture tools
+```bash
+brew install - cask visual-studio-code
+```
 
-  - Windows
+You can also download visual studio code from Microsoft: 
 
-    ```
-    either lightshot or preferably flameshot binary
-    ```
+![img](https://cdn-images-1.medium.com/max/800/1*DoYoLh8NI1s5XYgMTYkJag.png)[Microsoft Visual Studio Code](https://code.visualstudio.com/) official page screenshot
 
-  - Linux(Ubuntu)
+**Vscode Configuration**
 
-    ```bash
-    snap install flameshot # or sudo apt install flameshot
-    ```
+Let’s configure vscode integrated terminal on windows to use git zsh. Open vscode, then bring up settings, and then click on the upper right icon to see settings.json in text mode.
 
-  You can download flameshot binaries from the official website: https://flameshot.org/ 
+```json
+{
+ "editor.fontFamily": "'FiraCode NF','JetBrains Mono', Consolas, 'Courier New', monospace",
+ "editor.fontSize": 16,
+ "editor.lineHeight": 24,
+ "editor.fontWeight": "400",
+ "editor.fontLigatures": true, 
+ "editor.renderWhitespace": "none",
+ "editor.suggestSelection": "first",
+ "editor.minimap.enabled": false,
+ "editor.cursorStyle": "line-thin",
+ "editor.wordWrapColumn": 120,
+ "editor.wordWrap": "wordWrapColumn",
+ "editor.mouseWheelZoom": true,
+ "editor.formatOnSave": true,
+ "editor.formatOnPaste": true,
+ "breadcrumbs.enabled": true,
+ "terminal.integrated.fontFamily": "MesloLGS NF",
+ "terminal.integrated.fontSize": 18,
+ "terminal.integrated.cursorStyle": "line",
+ "terminal.integrated.cursorBlinking": true,
+ "terminal.integrated.env.windows": {"TERM": "xterm-256color"},
+ "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+ "terminal.integrated.shellArgs.windows": [" - command=../usr/bin/zsh.exe", "-i"],
+ "terminal.integrated.cwd": "${fileDirname}",
+ "terminal.integrated.drawBoldTextInBrightColors": false,
+ "terminal.integrated.enableBell": true,
+ "terminal.integrated.fontWeight": "300",
+ "terminal.integrated.fontWeightBold": "400",
+ "terminal.integrated.mouseWheelScrollSensitivity": 2,
+ "terminal.integrated.scrollback": 5000,
+ "window.zoomLevel": 0,
+}
+```
 
-  ![flameshot](./assets/flameshot.png)
-  
-  > *Please note that you may see below note on flameshot repository releases page.* 
-  >
-  > *"Current Windows Binaries are not signed but once they are available it will be uploaded here."*
-  >
-  > *However, windows binaries can be downloaded from previous release.*
-  
-  - macOS
-  
-    ```
-    brew install lightshot
-    ```
-    
-    
-  
-  You can download lightshot from its website: https://app.prntscr.com/en/index.html
-  
-  <img src="./assets/lightshot.png" alt="lightshot" style="zoom:67%;" />
+![img](https://cdn-images-1.medium.com/max/800/1*pkQgS_-ZQuQ9GddeadrXvg.gif)Vscode configuration
 
-> *You can download some of the image files in* [assets](./assets) *folder of this repository.*
+**Screen capture tools**
 
-If you successfully applied the settings explained in this article, You should be using zsh as shell with oh-my-zsh and powerlevel10k and some helper plugins installed, you should see beautiful shell command prompt in your terminal application. 
+- Windows
 
+```powershell
+choco install lightshot -y
+```
 
+*Note: Flameshot package is not available on chocolatey. You need to install it manually from its repository.*
 
-Please feel free to ask, comment and contribute ❤
+- Linux(Ubuntu)
+
+```bash
+snap install flameshot # or sudo apt install flameshot
+```
+
+You can download flameshot binaries from the official website: 
+
+<img src="https://cdn-images-1.medium.com/max/800/1*0RoZq12j_gDlI4LSeyRepQ.png" alt="https://flameshot.org/" style="zoom:80%;" />
+
+[Flameshot](https://flameshot.org/) official page screenshot
+
+*Please note that you may see the below note on the flameshot repository releases page.*
+
+*“Current Windows Binaries are not signed, but it will be uploaded here once they are available.”*
+
+*However, windows binaries can be downloaded from the previous release.*
+
+- macOS
+
+```bash
+brew install lightshot
+```
+
+You can download lightshot from its website: 
+
+<img src="https://cdn-images-1.medium.com/max/800/1*GJo3H2Rog9p7q4f0O4ykbw.png" alt="img" style="zoom:80%;" />
+
+[Lightshot](https://app.prntscr.com/en/index.html) official page screenshot
+
+If you successfully applied the settings explained in this article, You should be using zsh as a shell with oh-my-zsh and powerlevel10k and some helper plugins installed; you should see a beautiful shell command prompt in your terminal applications.
+
+You can also access this content from the Github repository: https://github.com/cwmatthew/clarusway-devenv
+
+Please feel free to ask, comment, and contribute. ❤
